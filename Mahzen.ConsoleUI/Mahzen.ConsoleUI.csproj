@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Mahzen.Business\Mahzen.Business.csproj" />
+    <ProjectReference Include="..\Mahzen.Common\Mahzen.Common.csproj" />
+    <ProjectReference Include="..\Mahzen.DataAccess\Mahzen.DataAccess.csproj" />
+    <ProjectReference Include="..\Mahzen.Entities\Mahzen.Entities.csproj" />
+  </ItemGroup>
+
+</Project>
