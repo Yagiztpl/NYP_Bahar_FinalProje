@@ -19,4 +19,11 @@ namespace Mahzen.Entities.Enums
         Buyu,
         Zihinsel
     }
+    public enum DusmanParcalari
+    {
+        Kafa,
+        Govde,
+        Bacaklar,
+        Kollar
+    }
 }

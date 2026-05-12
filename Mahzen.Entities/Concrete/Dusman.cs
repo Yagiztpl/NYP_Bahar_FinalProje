@@ -13,10 +13,15 @@ namespace Mahzen.Entities.Concrete
         public DusmanSinifi Sinif { get; set; }
         public DusmanYonelimi Yonelim { get; set; }
         public string Isim { get; set; }
+        public List<Ekipman> Ekipman_Lootable = new List<Ekipman>();
+        public List<Tuketilebilir> Tuketilebilir_Lootable = new List<Tuketilebilir>();
+        public List<Esya> Essya_Lootable = new List<Esya>();
         public Ekipman Slot0 { get; set; }
         public Ekipman Slot1 { get; set; }
         public Ekipman Slot2 { get; set; }
         public bool Boss { get; set; }
         public List<Esya> Loot = new List<Esya>();
+        public List<DusmanParcalari> DayanikliBolgeler = new List<DusmanParcalari>();
+        public List<DusmanParcalari> ZayifBolgeler = new List<DusmanParcalari>();
     }
 }
