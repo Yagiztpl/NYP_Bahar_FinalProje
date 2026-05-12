@@ -10,7 +10,8 @@ namespace Mahzen.Common.Config
 {
     public class Temel
     {
-        public static double ZorlukCarpani = 1;
+        public static double TemelZorlukCarpani = 1;
+        //----- Hasarlar
         public static Dictionary<HasarTipi, Hasar> HasarKatalogu = new Dictionary<HasarTipi, Hasar>()
         {
             // Fiziksel Hasarlar
@@ -30,6 +31,32 @@ namespace Mahzen.Common.Config
             // Zihinsel Hasarlar
             { HasarTipi.Ikna, new Hasar { Sinif = HasarSinifi.Zihinsel, Surec = HasarSureci.Anlik, Taban = 1} },
             { HasarTipi.Tehtid, new Hasar { Sinif = HasarSinifi.Zihinsel, Surec = HasarSureci.Anlik, Taban = 1} }
+        };
+        //----- İsimler
+        public static Dictionary<Biyomlar, string[]> BiyomPrefixKatalogu = new Dictionary<Biyomlar, string[]>
+        {
+        { Biyomlar.Buz, new[] { "Kırağı", "Donmuş", "Kristal", "Kutup", "Kar" } },
+        { Biyomlar.Lav, new[] { "Kor", "Magma", "Volkanik", "Ateşli", "Cehennem" } },
+        { Biyomlar.Sahil, new[] { "Tuzlu", "Mercan", "Derinsu", "Dalga", "Batık" } },
+        { Biyomlar.Orman, new[] { "Yosunlu", "Sarmaşık", "Kadim", "Vahşi", "Kuytu" } },
+        { Biyomlar.Lanet, new[] { "Ruhsuz", "Çürük", "Kemik", "Uğursuz", "Melun" } },
+        { Biyomlar.Dag, new[] { "Yüce", "Kaya", "Keskin", "Heybetli", "Sert" } },
+        { Biyomlar.Magara, new[] { "Karanlık", "Yankılı", "Nemli", "Dipsiz", "Kör" } }
+        };
+
+        public static Dictionary<DusmanYonelimi, string[]> YonelimSifatKatalogu = new Dictionary<DusmanYonelimi, string[]>
+        {
+        { DusmanYonelimi.Fiziksel, new[] { "Dişli", "Zırhlı", "Vurucu", "Ezici", "Pençeli" } },
+        { DusmanYonelimi.Buyu, new[] { "Rünik", "Mistik", "Işıltılı", "Gizemli", "Efsunlu" } },
+        { DusmanYonelimi.Zihinsel, new[] { "Lirik", "Hipnotik", "Sinsi", "Sessiz", "Kışkırtıcı" } }
+        };
+
+        public static Dictionary<DusmanSinifi, string[]> SinifİsimKatalogu = new Dictionary<DusmanSinifi, string[]>()
+        {
+            {DusmanSinifi.Pusucu, new[] {"Suikastçi", "Pusucusu", "Gölge" }},
+            {DusmanSinifi.Avci, new[] {"Düellocu", "Asker", "Tazı", "Katil" }},
+            {DusmanSinifi.Av, new[] {"Boğa", "TekBoynuzlu", "Yaratık Sürüsü" }},
+            {DusmanSinifi.Apex, new[] {"Titan", "Yok Edici", "Efsane" }},
         };
     }
 }

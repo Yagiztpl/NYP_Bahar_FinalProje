@@ -1,4 +1,5 @@
-﻿using Mahzen.Entities.Enums;
+﻿using Mahzen.Entities.Concrete;
+using Mahzen.Entities.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +8,12 @@ using System.Threading.Tasks;
 
 namespace Mahzen.Entities.Abstract
 {
-    internal class Oda
+    public class Oda
     {
         public OdaTipi OdaTipi { get; set; }
-        private int _yaratikSayisi { get; set; }
-        public int YaratikSayisi 
-        { get { return _yaratikSayisi; } set { if (OdaTipi == OdaTipi.Demirci || OdaTipi == OdaTipi.Dinlenme) _yaratikSayisi = 0; else _yaratikSayisi = value; } }
+        private int _DusmanSayisi { get; set; }
+        public int DusmanSayisi 
+        { get { return _DusmanSayisi; } set { if (OdaTipi == OdaTipi.Demirci || OdaTipi == OdaTipi.Dinlenme) _DusmanSayisi = 0; else _DusmanSayisi = value; } }
+        public List<Dusman> Dusmanlar { get; set; } = new List<Dusman>();
     }
 }
