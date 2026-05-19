@@ -10,6 +10,13 @@ namespace Mahzen.Entities.Abstract
 {
     public class Varlik
     {
+        public double TabanCan { get; set; }
+        public double TabanGuc { get; set; }
+        public double TabanDayaniklilik { get; set; }
+        public double TabanHiz { get; set; }
+        public double TabanZeka { get; set; }
+        public double TabanKarizma { get; set; }
+        public double TabanMana { get; set; }
         public double Can { get; set; }
         public double Guc { get; set; }
         public double Dayaniklilik { get; set; }

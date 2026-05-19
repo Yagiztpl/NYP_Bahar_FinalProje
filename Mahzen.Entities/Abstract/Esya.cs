@@ -9,7 +9,7 @@ namespace Mahzen.Entities.Abstract
 {
     public class Esya
     {
-        private string ID { get; set; }
+        public string ID { get; private set; }
         public int Seviye { get; set; } 
         public int Kilit { get; set; }
         public List<Esya> UretimTarifi = new List<Esya>();

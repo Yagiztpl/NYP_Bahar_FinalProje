@@ -99,7 +99,7 @@ namespace Mahzen.Common.Config
             { EsyaIsimleri.KeskinBalta, new Ekipman("20008") { Seviye = 0, Kilit = 1, Guc = 16, Hiz = -2, HasarSinifi = HasarSinifi.Fiziksel } },
 
             // Kilit = 2
-            { EsyaIsimleri.TungstenAsa, new Ekipman("20009") { Seviye = 0, Kilit = 2, Guc = 28, Dayaniklilik = 10, HasarSinifi = HasarSinifi.Fiziksel } },
+            { EsyaIsimleri.TungstenAsa, new Ekipman("20009") { Seviye = 0, Kilit = 2, Guc = 28, Dayaniklilik = 10, HasarSinifi = HasarSinifi.Element } },
             { EsyaIsimleri.YaratikPuluZirh, new Ekipman("20010") { Seviye = 0, Kilit = 2, Dayaniklilik = 30, Can = 40, Hiz = 5, HasarSinifi = HasarSinifi.Element } },
             { EsyaIsimleri.KaranlikKristalAsa, new Ekipman("20011") { Seviye = 0, Kilit = 2, Zeka = 35, Mana = 80, Karizma = 5, HasarSinifi = HasarSinifi.Zihinsel } },
             { EsyaIsimleri.CehennemTirpani, new Ekipman("20012") { Seviye = 0, Kilit = 2, Guc = 35, Can = -10, Hiz = 10, HasarSinifi = HasarSinifi.Fiziksel } }

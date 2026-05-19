@@ -1,4 +1,5 @@
-﻿using Mahzen.Common.Config;
+﻿using Mahzen.Business.Abstract;
+using Mahzen.Common.Config;
 using Mahzen.Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -8,19 +9,37 @@ using System.Threading.Tasks;
 
 namespace Mahzen.Business.Managers
 {
-    public class OyuncuManager
+    public class OyuncuManager : IOyuncuService
     {
         public static double OyunZorlukDegeri = 1;
+
+        public void IlerlemeHesapla(Oyuncu Oyuncu)
+        {
+            switch (Oyuncu.Ilerleme)
+            {
+                case 10: Oyuncu.EsyaKilidi = 1; break;
+                case 20: Oyuncu.EsyaKilidi = 2; break;
+                default: Oyuncu.EsyaKilidi = 0; break;
+            }
+        }
+
         public Oyuncu OyuncuUret()
         {
             Oyuncu _Oyuncu = new Oyuncu();
-            _Oyuncu.Can = 20;
-            _Oyuncu.Dayaniklilik = 5;
-            _Oyuncu.Hiz = 3;
-            _Oyuncu.Karizma = 2;
-            _Oyuncu.Mana = 20;
-            _Oyuncu.Zeka = 3;
-            _Oyuncu.Guc = 3;
+            _Oyuncu.TabanCan = 20;
+            _Oyuncu.TabanDayaniklilik = 5;
+            _Oyuncu.TabanHiz = 3;
+            _Oyuncu.TabanKarizma = 2;
+            _Oyuncu.TabanMana = 20;
+            _Oyuncu.TabanZeka = 3;
+            _Oyuncu.TabanGuc = 3;
+            _Oyuncu.Can = _Oyuncu.TabanCan;
+            _Oyuncu.Dayaniklilik = _Oyuncu.TabanDayaniklilik;
+            _Oyuncu.Hiz = _Oyuncu.TabanHiz;
+            _Oyuncu.Karizma = _Oyuncu.TabanKarizma;
+            _Oyuncu.Mana = _Oyuncu.TabanMana;
+            _Oyuncu.Zeka = _Oyuncu.TabanZeka;
+            _Oyuncu.Guc = _Oyuncu.TabanGuc;
             return _Oyuncu;
         }
         public void ZorlukHesabi(Oyuncu Oyuncu)

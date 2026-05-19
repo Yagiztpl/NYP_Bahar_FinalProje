@@ -1,6 +1,6 @@
 ﻿namespace ColortextFunction
 {
-    internal class ColorText
+    public static class ColorText
     {
          public static void CWriteLine(string color, string text)
         {

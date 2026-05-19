@@ -1,4 +1,5 @@
 ﻿using ColortextFunction;
+using Mahzen.Common.Config;
 
 namespace Mahzen.ConsoleUI
 {

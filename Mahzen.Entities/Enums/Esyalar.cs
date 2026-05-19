@@ -8,7 +8,7 @@ namespace Mahzen.Entities.Enums
 {
     public enum EsyaNadirligi
     {
-        Kirik, //0.5x
+        Kirik, //0.50x
         Kalitesiz, //0.8x
         Basit, // 1x
         Nadir, // 1.25x
