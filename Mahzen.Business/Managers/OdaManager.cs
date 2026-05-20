@@ -1,4 +1,5 @@
-﻿using Mahzen.Common.Config;
+﻿using ColortextFunction;
+using Mahzen.Common.Config;
 using Mahzen.Entities.Abstract;
 using Mahzen.Entities.Concrete;
 using Mahzen.Entities.Enums;
@@ -21,7 +22,7 @@ namespace Mahzen.Business.Managers
             // Şan/Zorluk
             _Harita.Sans = _random.Next(1 + Convert.ToInt32(_Zorluk * 5)+1);
             _Harita.HaritaZorlugu = _random.Next(1 + Convert.ToInt32(5 * _Zorluk)+1);
-            _Harita.DonusHakki = 3;
+            _Harita.DonusHakki = 1;
             //Biyom/Oda
             int biyomSayisi = Enum.GetNames(typeof(Biyomlar)).Length;
             _Harita.Biyom = (Biyomlar)_random.Next(0, biyomSayisi);
@@ -37,11 +38,11 @@ namespace Mahzen.Business.Managers
             Oda _Oda = new Oda();
             int enumVaryantlari;
             enumVaryantlari = Enum.GetNames(typeof(OdaTipi)).Length;
-            _Oda.OdaTipi = (OdaTipi)_random.Next(1, enumVaryantlari);
+            _Oda.OdaTipi = (OdaTipi)_random.Next(0, enumVaryantlari);
             switch (_Oda.OdaTipi)
             {
-                case OdaTipi.Savas: _Oda.DusmanSayisi = _random.Next(1, Convert.ToInt32(Harita.HaritaZorlugu/2)); break;
-                case OdaTipi.Arena: _Oda.DusmanSayisi = _random.Next(2, Convert.ToInt32(Harita.HaritaZorlugu)); break;
+                case OdaTipi.Savas: _Oda.DusmanSayisi = _random.Next(1, Math.Max(2,Convert.ToInt32(Harita.HaritaZorlugu/2))); break;
+                case OdaTipi.Arena: _Oda.DusmanSayisi = _random.Next(2, Math.Max(2,Convert.ToInt32(Harita.HaritaZorlugu))); break;
             }
             for (int i = 0; i < _Oda.DusmanSayisi; i++)
             {
@@ -139,23 +140,26 @@ namespace Mahzen.Business.Managers
             OyunManager _OyunManager = new OyunManager();
             var uygunEkipmanlar = Temel.EkipmanKatalogu.Values.Where(e => e.Kilit <= oyuncuEsyaKilidi).ToList();
             int[] SlotSanslari = { (int)Math.Ceiling(50 * _Zorluk), (int)Math.Ceiling(30 * _Zorluk), (int)Math.Ceiling(15 * _Zorluk), (int)Math.Ceiling(5 * _Zorluk) };
-            if (Yuzde.YuzdeRandom(SlotSanslari) >= 1)
+            if (uygunEkipmanlar.Any())
             {
-                Ekipman equipment0 = _OyunManager.EkipmanOlustur(uygunEkipmanlar[_random.Next(uygunEkipmanlar.Count)]);
-                _EnvanterManager.EkipmanKusan(_Dusman, equipment0);
-                _Dusman.Ekipman_Lootable.Add(equipment0);
-            }
-            if (Yuzde.YuzdeRandom(SlotSanslari) >= 2)
-            {
-                Ekipman equipment1 = _OyunManager.EkipmanOlustur(uygunEkipmanlar[_random.Next(uygunEkipmanlar.Count)]);
-                _EnvanterManager.EkipmanKusan(_Dusman, equipment1);
-                _Dusman.Ekipman_Lootable.Add(equipment1);
-            }
-            if (Yuzde.YuzdeRandom(SlotSanslari) >= 3)
-            {
-                Ekipman equipment2 = _OyunManager.EkipmanOlustur(uygunEkipmanlar[_random.Next(uygunEkipmanlar.Count)]);
-                _EnvanterManager.EkipmanKusan(_Dusman, equipment2);
-                _Dusman.Ekipman_Lootable.Add(equipment2);
+                if (Yuzde.YuzdeRandom(SlotSanslari) >= 1)
+                {
+                    Ekipman equipment0 = _OyunManager.EkipmanOlustur(uygunEkipmanlar[_random.Next(uygunEkipmanlar.Count)]);
+                    _EnvanterManager.EkipmanKusan(_Dusman, equipment0);
+                    _Dusman.Ekipman_Lootable.Add(equipment0);
+                }
+                if (Yuzde.YuzdeRandom(SlotSanslari) >= 2)
+                {
+                    Ekipman equipment1 = _OyunManager.EkipmanOlustur(uygunEkipmanlar[_random.Next(uygunEkipmanlar.Count)]);
+                    _EnvanterManager.EkipmanKusan(_Dusman, equipment1);
+                    _Dusman.Ekipman_Lootable.Add(equipment1);
+                }
+                if (Yuzde.YuzdeRandom(SlotSanslari) >= 3)
+                {
+                    Ekipman equipment2 = _OyunManager.EkipmanOlustur(uygunEkipmanlar[_random.Next(uygunEkipmanlar.Count)]);
+                    _EnvanterManager.EkipmanKusan(_Dusman, equipment2);
+                    _Dusman.Ekipman_Lootable.Add(equipment2);
+                }
             }
             var uygunEsyalar = Temel.EsyaKatalogu.Values.Where(e => e.Kilit <= oyuncuEsyaKilidi).ToList();
             Esya secilenesya = uygunEsyalar[_random.Next(uygunEsyalar.Count)];
@@ -164,16 +168,53 @@ namespace Mahzen.Business.Managers
             if (_random.Next(1,5) == 4)
             {
                 var uygunTuketilebilirler = Temel.TuketilebilirKatalogu.Values.Where(e => e.Kilit <= oyuncuEsyaKilidi).ToList();
-                Tuketilebilir secilenTuketilebilir = uygunTuketilebilirler[_random.Next(uygunEsyalar.Count)];
-                Tuketilebilir Item1 = new Tuketilebilir(secilenTuketilebilir.ID)
+                if (uygunTuketilebilirler.Any())
                 {
-                    Sure = secilenTuketilebilir.Sure,
-                    OdakStat = secilenTuketilebilir.OdakStat,
-                    EkledigiDeger = secilenTuketilebilir.EkledigiDeger,
-                };
-                _Dusman.Tuketilebilir_Lootable.Add(Item1);
+                    Tuketilebilir secilenTuketilebilir = uygunTuketilebilirler[_random.Next(uygunTuketilebilirler.Count)];
+                    _Dusman.Tuketilebilir_Lootable.Add(new Tuketilebilir(secilenTuketilebilir.ID)
+                    {
+                        Sure = secilenTuketilebilir.Sure,
+                        OdakStat = secilenTuketilebilir.OdakStat,
+                        EkledigiDeger = secilenTuketilebilir.EkledigiDeger,
+                    });
+                }
             }
             return _Dusman;
+        }
+        public List<Oda> OdalariKar(Harita Harita)
+        {
+            List<Oda> eldekiOdalar = new List<Oda>();
+            List<Oda> secilenOdalar = new List<Oda>();
+            eldekiOdalar = Harita.Odalar.Where(x => x.ZiyaretEdildi != true).ToList();
+            for (int i = 0; i < 3; i++)
+            {
+                secilenOdalar.Add(eldekiOdalar[_random.Next(eldekiOdalar.Count)]);
+            }
+            Console.WriteLine("Karşına 3 Oda çıkıyor, bunlar:");
+            foreach (var item in secilenOdalar)
+            {
+                switch (item.OdaTipi)
+                {
+                    case OdaTipi.Dinlenme:
+                        ColorText.CWriteLine("O", "Sakin bir kamp");
+                        break;
+                    case OdaTipi.Arena:
+                        ColorText.CWriteLine("R", "Dev bir kolezyum");
+                        break;
+                    case OdaTipi.Savas:
+                        ColorText.CWriteLine("P", "Tehlikeli bir orman");
+                        break;
+                }
+            }
+            Console.WriteLine("Seçimin hangisi [Oda1] [Oda2] [Oda3]");
+            return secilenOdalar;
+        }
+        public void OdaSec(Oyuncu Oyuncu, Oda Oda)
+        {
+            OyuncuManager _oyuncuManager = new OyuncuManager();
+            Oda.ZiyaretEdildi = true;
+            Oyuncu.Ilerleme++;
+            _oyuncuManager.IlerlemeHesapla(Oyuncu);
         }
     }
 }

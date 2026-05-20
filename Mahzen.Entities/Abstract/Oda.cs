@@ -11,9 +11,10 @@ namespace Mahzen.Entities.Abstract
     public class Oda
     {
         public OdaTipi OdaTipi { get; set; }
+        public bool ZiyaretEdildi;
         private int _DusmanSayisi { get; set; }
         public int DusmanSayisi 
-        { get { return _DusmanSayisi; } set { if (OdaTipi == OdaTipi.Demirci || OdaTipi == OdaTipi.Dinlenme) _DusmanSayisi = 0; else _DusmanSayisi = value; } }
+        { get { return _DusmanSayisi; } set { if ( OdaTipi == OdaTipi.Dinlenme) _DusmanSayisi = 0; else _DusmanSayisi = value; } }
         public List<Dusman> Dusmanlar { get; set; } = new List<Dusman>();
     }
 }

@@ -12,7 +12,7 @@ namespace Mahzen.Business.Abstract
     {
         void EkipmanKusan(Varlik Varlik, Ekipman Ekipman);
         void EkipmanCikart(Varlik Varlik, Ekipman Ekipman);
-        Ekipman EkipmanUret(Oyuncu oyuncu, Ekipman uretilecekEkipman);
-        void EsyalariTopla(Dusman Dusman, Oyuncu Oyuncu)
+        void Listele(Oyuncu Oyuncu);
+        void EsyalariTopla(Dusman Dusman, Oyuncu Oyuncu);
     }
 }

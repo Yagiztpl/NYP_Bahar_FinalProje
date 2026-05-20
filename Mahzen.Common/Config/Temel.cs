@@ -83,28 +83,51 @@ namespace Mahzen.Common.Config
             { EsyaIsimleri.PeriTozu, new Materyal("10011") { Seviye = 0, Kilit = 2 } },
             { EsyaIsimleri.BuyuKristali, new Materyal("10012") { Seviye = 0, Kilit = 2 } }
         };
-    
+
+        // Mahzen.Common/Config/Temel.cs İÇİNDEKİ EkipmanKatalogu'nu BUNUNLA DEĞİŞTİR
+
         public static Dictionary<EsyaIsimleri, Ekipman> EkipmanKatalogu = new Dictionary<EsyaIsimleri, Ekipman>()
-        {
-            // Kilit = 0
-            { EsyaIsimleri.DermeCatmaZirh, new Ekipman("20001") { Seviye = 0, Kilit = 0, Dayaniklilik = 5, Can = 5, HasarSinifi = HasarSinifi.Fiziksel } },
-            { EsyaIsimleri.TahtaKalkan, new Ekipman("20002") { Seviye = 0, Kilit = 0, Dayaniklilik = 8, Hiz = -1, HasarSinifi = HasarSinifi.Fiziksel } },
-            { EsyaIsimleri.EskiCubbe, new Ekipman("20003") { Seviye = 0, Kilit = 0, Zeka = 3, Mana = 10, HasarSinifi = HasarSinifi.Zihinsel } },
-            { EsyaIsimleri.KemikHancer, new Ekipman("20004") { Seviye = 0, Kilit = 0, Guc = 4, Hiz = 4, HasarSinifi = HasarSinifi.Fiziksel } },
+{
+    // // Kilit = 0
+    { EsyaIsimleri.DermeCatmaZirh, new Ekipman("20001") {
+        Seviye = 0, Kilit = 0, Dayaniklilik = 5, Can = 5, HasarSinifi = HasarSinifi.Fiziksel,
+        // Tarif: 3x Çürük Odun (10001), 2x Hayvan Postu (10002)
+        UretimTarifi = new List<Esya> {
+            new Materyal("10001"), new Materyal("10001"), new Materyal("10001"),
+            new Materyal("10002"), new Materyal("10002")
+        }
+    } },
+    { EsyaIsimleri.TahtaKalkan, new Ekipman("20002") { Seviye = 0, Kilit = 0, Dayaniklilik = 8, Hiz = -1, HasarSinifi = HasarSinifi.Fiziksel } },
+    { EsyaIsimleri.EskiCubbe, new Ekipman("20003") { Seviye = 0, Kilit = 0, Zeka = 3, Mana = 10, HasarSinifi = HasarSinifi.Zihinsel } },
+    { EsyaIsimleri.KemikHancer, new Ekipman("20004") { Seviye = 0, Kilit = 0, Guc = 4, Hiz = 4, HasarSinifi = HasarSinifi.Fiziksel } },
 
-            // Kilit = 1
-            { EsyaIsimleri.CelikKilic, new Ekipman("20005") { Seviye = 0, Kilit = 1, Guc = 12, Dayaniklilik = 2, HasarSinifi = HasarSinifi.Fiziksel } },
-            { EsyaIsimleri.AgirCelikZirh, new Ekipman("20006") { Seviye = 0, Kilit = 1, Dayaniklilik = 20, Can = 20, Hiz = -3, HasarSinifi = HasarSinifi.Fiziksel } },
-            { EsyaIsimleri.RunikAsa, new Ekipman("20007") { Seviye = 0, Kilit = 1, Zeka = 15, Mana = 25, HasarSinifi = HasarSinifi.Element } },
-            { EsyaIsimleri.KeskinBalta, new Ekipman("20008") { Seviye = 0, Kilit = 1, Guc = 16, Hiz = -2, HasarSinifi = HasarSinifi.Fiziksel } },
+    // Kilit = 1
+    { EsyaIsimleri.CelikKilic, new Ekipman("20005") {
+        Seviye = 0, Kilit = 1, Guc = 12, Dayaniklilik = 2, HasarSinifi = HasarSinifi.Fiziksel,
+        // Tarif: 3x Çelik Külçe (10005), 1x İşlenmiş Deri (10006), 1x Kırık Kemik (10004)
+        UretimTarifi = new List<Esya> {
+            new Materyal("10005"), new Materyal("10005"), new Materyal("10005"),
+            new Materyal("10006"), new Materyal("10004")
+        }
+    } },
+    { EsyaIsimleri.AgirCelikZirh, new Ekipman("20006") { Seviye = 0, Kilit = 1, Dayaniklilik = 20, Can = 20, Hiz = -3, HasarSinifi = HasarSinifi.Fiziksel } },
+    { EsyaIsimleri.RunikAsa, new Ekipman("20007") { Seviye = 0, Kilit = 1, Zeka = 15, Mana = 25, HasarSinifi = HasarSinifi.Element } },
+    { EsyaIsimleri.KeskinBalta, new Ekipman("20008") { Seviye = 0, Kilit = 1, Guc = 16, Hiz = -2, HasarSinifi = HasarSinifi.Fiziksel } },
 
-            // Kilit = 2
-            { EsyaIsimleri.TungstenAsa, new Ekipman("20009") { Seviye = 0, Kilit = 2, Guc = 28, Dayaniklilik = 10, HasarSinifi = HasarSinifi.Element } },
-            { EsyaIsimleri.YaratikPuluZirh, new Ekipman("20010") { Seviye = 0, Kilit = 2, Dayaniklilik = 30, Can = 40, Hiz = 5, HasarSinifi = HasarSinifi.Element } },
-            { EsyaIsimleri.KaranlikKristalAsa, new Ekipman("20011") { Seviye = 0, Kilit = 2, Zeka = 35, Mana = 80, Karizma = 5, HasarSinifi = HasarSinifi.Zihinsel } },
-            { EsyaIsimleri.CehennemTirpani, new Ekipman("20012") { Seviye = 0, Kilit = 2, Guc = 35, Can = -10, Hiz = 10, HasarSinifi = HasarSinifi.Fiziksel } }
-        };
-    public static Dictionary<EsyaIsimleri, Tuketilebilir> TuketilebilirKatalogu = new Dictionary<EsyaIsimleri, Tuketilebilir>()
+    // Kilit = 2
+    { EsyaIsimleri.TungstenAsa, new Ekipman("20009") {
+        Seviye = 0, Kilit = 2, Guc = 28, Dayaniklilik = 10, HasarSinifi = HasarSinifi.Element,
+        // Tarif: 4x Tungsten Külçe (10009), 2x Büyü Kristali (10012)
+        UretimTarifi = new List<Esya> {
+            new Materyal("10009"), new Materyal("10009"), new Materyal("10009"), new Materyal("10009"),
+            new Materyal("10012"), new Materyal("10012")
+        }
+    } },
+    { EsyaIsimleri.YaratikPuluZirh, new Ekipman("20010") { Seviye = 0, Kilit = 2, Dayaniklilik = 30, Can = 40, Hiz = 5, HasarSinifi = HasarSinifi.Element } },
+    { EsyaIsimleri.KaranlikKristalAsa, new Ekipman("20011") { Seviye = 0, Kilit = 2, Zeka = 35, Mana = 80, Karizma = 5, HasarSinifi = HasarSinifi.Zihinsel } },
+    { EsyaIsimleri.CehennemTirpani, new Ekipman("20012") { Seviye = 0, Kilit = 2, Guc = 35, Can = -10, Hiz = 10, HasarSinifi = HasarSinifi.Fiziksel } }
+};
+        public static Dictionary<EsyaIsimleri, Tuketilebilir> TuketilebilirKatalogu = new Dictionary<EsyaIsimleri, Tuketilebilir>()
         {
             // Kilit = 0
             { EsyaIsimleri.KufluEkmek, new Tuketilebilir("30001") { Seviye = 0, Kilit = 0, OdakStat = "Can", EkledigiDeger = 15, Sure = null } },

@@ -9,7 +9,6 @@ namespace Mahzen.Entities.Enums
     public enum OdaTipi
     {
         Dinlenme,
-        Demirci,
         Arena,
         Savas
     }

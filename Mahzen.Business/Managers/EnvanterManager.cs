@@ -1,4 +1,5 @@
-﻿using Mahzen.Business.Abstract;
+﻿using ColortextFunction;
+using Mahzen.Business.Abstract;
 using Mahzen.Entities.Abstract;
 using Mahzen.Entities.Concrete;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Mahzen.Business.Managers
 {
-    internal class EnvanterManager : IEnvanterService
+    public class EnvanterManager : IEnvanterService, IUretimService
     {
         public void EkipmanKusan(Varlik Varlik, Ekipman Ekipman)
         {
@@ -141,6 +142,18 @@ namespace Mahzen.Business.Managers
                 }
             }
 
+        }
+        public void Listele(Oyuncu Oyuncu)
+        {
+            ColorText.CWriteLine("Y","Takılı Eşyalar:");
+            ColorText.CWriteLine("G", $"Birincil Silah -> {Oyuncu.AnaSilah}");
+            ColorText.CWriteLine("G", $"Yan Silah -> {Oyuncu.YanSilah}");
+            ColorText.CWriteLine("G", $"Zırh Silah -> {Oyuncu.Zirh}");
+            ColorText.CWriteLine("Y","Envanter: ");
+            foreach (var item in Oyuncu.Envanter)
+            {
+                Console.WriteLine($"-> {item}");
+            }
         }
     }
 }
