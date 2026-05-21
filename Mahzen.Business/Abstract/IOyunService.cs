@@ -10,6 +10,7 @@ namespace Mahzen.Business.Abstract
     public interface IOyunService
     {
        Ekipman EkipmanOlustur(Ekipman Sablon);
-       
+
+
     }
 }

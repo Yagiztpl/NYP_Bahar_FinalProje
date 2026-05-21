@@ -9,13 +9,14 @@ namespace Mahzen.Entities.Abstract
 {
     public class Esya
     {
+        public string Isim;
         public string ID { get; private set; }
         public int Seviye { get; set; } 
         public int Kilit { get; set; }
         public List<Esya> UretimTarifi = new List<Esya>();
         public Esya(string ID)
         {
-            ID = this.ID;
+            this.ID = ID;
         }
     }
 
@@ -31,11 +32,13 @@ namespace Mahzen.Entities.Abstract
     {
         public double Can { get; set; }
         public double Guc { get; set; }
+        
         public double Dayaniklilik { get; set; }
         public double Hiz { get; set; }
         public double Zeka { get; set; }
         public double Karizma { get; set; }
         public double Mana { get; set; }
+        public EkipmanTipi Tip { get; set; }
         public HasarTipi HasarTipi { get; set; }
         public HasarSinifi HasarSinifi { get; set; }
         public EsyaNadirligi Nadirlik { get; set; }

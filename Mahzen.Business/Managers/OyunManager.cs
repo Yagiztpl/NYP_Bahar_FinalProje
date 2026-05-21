@@ -1,6 +1,7 @@
 ﻿using Mahzen.Business.Abstract;
 using Mahzen.Common.Config;
 using Mahzen.Entities.Abstract;
+using Mahzen.Entities.Concrete;
 using Mahzen.Entities.Enums;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace Mahzen.Business.Managers
         {
             Ekipman Ekipman = new Ekipman(Sablon.ID)
             {
+                Isim = Sablon.Isim,
                 Kilit = Sablon.Kilit,
                 Dayaniklilik = Sablon.Dayaniklilik,
                 Can = Sablon.Can,

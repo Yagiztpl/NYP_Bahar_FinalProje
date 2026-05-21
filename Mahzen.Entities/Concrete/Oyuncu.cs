@@ -13,8 +13,6 @@ namespace Mahzen.Entities.Concrete
         public Ekipman Zirh { get; set; }
         public Ekipman AnaSilah { get; set; }
         public Ekipman YanSilah { get; set; }
-        public Ekipman Taki0 { get; set; }
-        public Ekipman Taki1 { get; set; }
         public int Ilerleme;
         public int EsyaKilidi;
     }

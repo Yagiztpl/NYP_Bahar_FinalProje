@@ -1,5 +1,6 @@
 ﻿using Mahzen.Business.Managers;
 using Mahzen.Common.Config;
+using Mahzen.Entities.Abstract;
 using Mahzen.Entities.Concrete;
 using Mahzen.Entities.Enums;
 using System;
@@ -13,7 +14,7 @@ namespace Mahzen.ConsoleUI
     public class GirdiOkuyucu
     {
         private EnvanterManager EnvanterManager = new EnvanterManager();
-        public List<string> KomutIsle(string komut, Oyuncu aktifOyuncu)
+        public List<string> KomutIsle(string komut, Oyuncu aktifOyuncu, List<Oda> aktifOdalar, bool odaSecimi)
         {
             komut = komut.ToLower().Trim();
             List<string> cikti = new List<string>(); 
@@ -60,6 +61,34 @@ namespace Mahzen.ConsoleUI
             if (komut.Contains("envanter"))
             {
                 EnvanterManager.Listele(aktifOyuncu);
+                cikti.Add("50000");
+            }
+            if (komut.Contains("oda1"))
+            {
+                OdaManager _OdaManager = new OdaManager();
+                cikti.Add("50001");
+                if (odaSecimi)
+                    _OdaManager.OdaSec(aktifOyuncu, aktifOdalar[0]);
+            }
+            if (komut.Contains("oda2"))
+            {
+                OdaManager _OdaManager = new OdaManager();
+                cikti.Add("50002");
+                if (odaSecimi)
+                    _OdaManager.OdaSec(aktifOyuncu, aktifOdalar[1]);
+            }
+            if (komut.Contains("oda3"))
+            {
+                OdaManager _OdaManager = new OdaManager();
+                cikti.Add("50003");
+                if (odaSecimi)
+                    _OdaManager.OdaSec(aktifOyuncu, aktifOdalar[2]);
+            }
+            if (komut.Contains("debug_"))
+            {
+                string esyaAdi = komut.Replace("debug_", "").Trim();
+                EnvanterManager.Debug_EsyaEkle(aktifOyuncu, esyaAdi);
+                cikti.Add("50000");
             }
             return cikti;
         }

@@ -20,7 +20,6 @@ namespace Mahzen.Entities.Enums
     {
         Silah,
         Zırh,
-        Taki
     }
 
     public enum EsyaIsimleri

@@ -163,7 +163,7 @@ namespace Mahzen.Business.Managers
             }
             var uygunEsyalar = Temel.EsyaKatalogu.Values.Where(e => e.Kilit <= oyuncuEsyaKilidi).ToList();
             Esya secilenesya = uygunEsyalar[_random.Next(uygunEsyalar.Count)];
-            Esya Item0 = new Esya(secilenesya.ID);
+            Esya Item0 = new Esya(secilenesya.ID) { Isim = secilenesya.Isim };
             _Dusman.Esya_Lootable.Add(Item0);
             if (_random.Next(1,5) == 4)
             {
