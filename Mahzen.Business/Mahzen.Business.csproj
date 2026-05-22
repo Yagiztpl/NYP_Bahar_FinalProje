@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Mahzen.Common\Mahzen.Common.csproj" />
+    <ProjectReference Include="..\Mahzen.DataAccess\Mahzen.DataAccess.csproj" />
     <ProjectReference Include="..\Mahzen.Entities\Mahzen.Entities.csproj" />
   </ItemGroup>
 

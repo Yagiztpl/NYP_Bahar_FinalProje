@@ -88,7 +88,7 @@ namespace Mahzen.Common.Config
 {
     // Kilit = 0
     { EsyaIsimleri.DermeCatmaZirh, new Ekipman("20001") {
-        Isim = "Derme Çatma Zırh", Seviye = 0, Kilit = 0, Dayaniklilik = 5, Can = 5,, HasarSinifi = HasarSinifi.Fiziksel,
+        Isim = "Derme Çatma Zırh", Seviye = 0, Kilit = 0, Dayaniklilik = 5, Can = 5, HasarSinifi = HasarSinifi.Fiziksel,
         UretimTarifi = new List<Esya> {
             new Materyal("10001"), new Materyal("10001"), new Materyal("10001"),
             new Materyal("10002"), new Materyal("10002")

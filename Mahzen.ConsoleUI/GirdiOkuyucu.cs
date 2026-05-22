@@ -1,5 +1,7 @@
-﻿using Mahzen.Business.Managers;
+﻿using ColortextFunction;
+using Mahzen.Business.Managers;
 using Mahzen.Common.Config;
+using Mahzen.DataAccess.Concrete;
 using Mahzen.Entities.Abstract;
 using Mahzen.Entities.Concrete;
 using Mahzen.Entities.Enums;
@@ -89,6 +91,40 @@ namespace Mahzen.ConsoleUI
                 string esyaAdi = komut.Replace("debug_", "").Trim();
                 EnvanterManager.Debug_EsyaEkle(aktifOyuncu, esyaAdi);
                 cikti.Add("50000");
+            }
+            if (komut.Contains("kusan") || komut.Contains("tak") || komut.Contains("giy"))
+            {
+                string esyaAdi = komut.Replace("kuşan", "").Replace("kusan", "").Replace("tak", "").Replace("giy", "").Trim();
+                var envanterdekiEsya = aktifOyuncu.Envanter.FirstOrDefault(e => e.Isim != null && e.Isim.ToLower() == esyaAdi);
+                if (envanterdekiEsya != null)
+                {
+                    if (envanterdekiEsya is Ekipman kusanilacakEkipman)
+                    {
+                        EnvanterManager.EkipmanKusanOyuncu(aktifOyuncu, kusanilacakEkipman);
+                    }
+                    else
+                    {
+                        ColorText.CWriteLine("R", $"[-] {envanterdekiEsya.Isim} kuşanılabilecek (giyilebilecek) bir eşya değil!");
+                    }
+                }
+                else
+                {
+                    ColorText.CWriteLine("R", $"[-] Envanterinde '{esyaAdi}' adında bir eşya bulamadım. Adını tam yazdığından emin ol.");
+                }
+                cikti.Add("50000");
+            }
+            if (komut.Contains("kaydet"))
+            {
+                KayitManager _kayitManager = new KayitManager(new JsonKayitDal());
+                if (_kayitManager.OyunuKaydet(aktifOyuncu))
+                {
+                    ColorText.CWriteLine("G", ">> Oyun başarıyla kaydedildi! (Güvendesin)");
+                }
+                else
+                {
+                    ColorText.CWriteLine("R", ">> Kayıt sırasında bir hata oluştu!");
+                }
+                cikti.Add("50005");
             }
             return cikti;
         }

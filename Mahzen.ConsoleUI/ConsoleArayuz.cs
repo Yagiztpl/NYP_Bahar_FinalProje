@@ -1,5 +1,6 @@
 ﻿using ColortextFunction;
 using Mahzen.Business.Managers;
+using Mahzen.DataAccess.Concrete;
 using Mahzen.Entities.Abstract;
 using Mahzen.Entities.Concrete;
 using Mahzen.Entities.Enums;
@@ -18,6 +19,7 @@ namespace Mahzen.ConsoleUI
         private GirdiOkuyucu _girdiOkuyucu = new GirdiOkuyucu();
         private EnvanterManager _envanterManager = new EnvanterManager();
         private OyunManager _oyunManager = new OyunManager();
+        private KayitManager _kayitManager = new KayitManager(new JsonKayitDal());
 
         public void OyunuBaslat()
         {
@@ -25,46 +27,80 @@ namespace Mahzen.ConsoleUI
             ColorText.CWriteLine("Y", "             MAHZEN'E HOŞ GELDİNİZ               ");
             ColorText.CWriteLine("Y", "=================================================");
 
-            Oyuncu aktifOyuncu = new Oyuncu()
+            Oyuncu aktifOyuncu = null;
+            if (_kayitManager.KayitBulunduMu())
             {
-                Can = 100,
-                TabanCan = 100,
-                Guc = 12,
-                Dayaniklilik = 8,
-                Hiz = 10,
-                Zeka = 10,
-                EsyaKilidi = 0,
-                Ilerleme = 0
-            };
+                ColorText.CWriteLine("G", "Mahzen'in derinliklerinde eski bir iz bulundu...");
+                ColorText.CWriteLine("C", "[1] Yeni Oyun Başlat");
+                ColorText.CWriteLine("C", "[2] Kaldığım Yerden Devam Et");
+                Console.Write("Seçiminiz: ");
+                string secim = Console.ReadLine();
+
+                if (secim == "2")
+                {
+                    aktifOyuncu = _kayitManager.OyunuYukle();
+                    if (aktifOyuncu != null)
+                    {
+                        ColorText.CWriteLine("G", "Kayıt başarıyla yüklendi! Maceraya dönüyorsun...");
+                    }
+                    else
+                    {
+                        ColorText.CWriteLine("R", "Kayıt dosyası bozuk! Yeni oyun başlatılıyor...");
+                    }
+                }
+            }
+            if (aktifOyuncu == null)
+            {
+                aktifOyuncu = new Oyuncu()
+                {
+                    Can = 100,
+                    TabanCan = 100,
+                    Guc = 12,
+                    Dayaniklilik = 8,
+                    Hiz = 10,
+                    Zeka = 10,
+                    EsyaKilidi = 0,
+                    Ilerleme = 0
+                };
+                ColorText.CWriteLine("Y", "Yeni bir maceracı mahzene adım atıyor...");
+            }
             Harita mevcutHarita = _odaManager.HaritaUret(aktifOyuncu.EsyaKilidi);
+
             while (aktifOyuncu.Can > 0)
             {
                 ColorText.CWriteLine("C", $"\n--- DURUM: [Can: {aktifOyuncu.Can:F1}] | [İlerleme: {aktifOyuncu.Ilerleme}/{mevcutHarita.OdaSayisi}] ---");
+
                 if (aktifOyuncu.Ilerleme >= mevcutHarita.OdaSayisi)
                 {
                     ColorText.CWriteLine("G", "\nTEBRİKLER! Mahzenin karanlığından sağ çıkmayı başardın!");
                     break;
                 }
+
                 List<Oda> secenekler = _odaManager.OdalariKar(mevcutHarita);
-                if (secenekler == null || secenekler.Count == 0)
-                {
-                    Console.WriteLine("İlerleyecek yol kalmadı...");
-                    break;
-                }
+                if (secenekler == null || secenekler.Count == 0) break;
+
                 Oda secilenOda = null;
+
                 while (secilenOda == null)
                 {
-                    Console.Write("\nHamleniz (örn: oda1, envanter): ");
+                    Console.Write("\nHamleniz (örn: oda1, envanter, kaydet): ");
                     string girdi = Console.ReadLine();
                     List<string> komutlar = _girdiOkuyucu.KomutIsle(girdi, aktifOyuncu, secenekler, true);
                     secilenOda = secenekler.FirstOrDefault(o => o.ZiyaretEdildi);
-                    if (secilenOda == null && !komutlar.Contains("envanter"))
+                    bool hamleGecerliMi = komutlar.Any(k => k != null && k.StartsWith("50"));
+
+                    if (secilenOda == null && !hamleGecerliMi)
                     {
-                        ColorText.CWriteLine("R", "Lütfen ilerlemek için bir oda seçin (Oda1, Oda2, Oda3) veya envanterinize bakın.");
+                        ColorText.CWriteLine("R", "Lütfen geçerli bir hamle yapın (oda1, envanter, kuşan çelik kılıç, kaydet).");
                     }
                 }
-                OdaAksiyonunuTetikle(aktifOyuncu, secilenOda);
+
+                if (secilenOda != null)
+                {
+                    OdaAksiyonunuTetikle(aktifOyuncu, secilenOda);
+                }
             }
+
             if (aktifOyuncu.Can <= 0)
             {
                 ColorText.CWriteLine("R", "\n=================================================");

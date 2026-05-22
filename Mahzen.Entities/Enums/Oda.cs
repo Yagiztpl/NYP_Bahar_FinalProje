@@ -10,6 +10,6 @@ namespace Mahzen.Entities.Enums
     {
         Dinlenme,
         Arena,
-        Savas
+        Savas,
     }
 }

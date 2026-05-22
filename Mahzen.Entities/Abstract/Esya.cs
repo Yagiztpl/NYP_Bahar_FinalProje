@@ -3,10 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Mahzen.Entities.Abstract
 {
+    [JsonDerivedType(typeof(Materyal), typeDiscriminator: "materyal")]
+    [JsonDerivedType(typeof(Ekipman), typeDiscriminator: "ekipman")]
+    [JsonDerivedType(typeof(Tuketilebilir), typeDiscriminator: "tuketilebilir")]
     public class Esya
     {
         public string Isim;

@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Mahzen.Entities\Mahzen.Entities.csproj" />
+  </ItemGroup>
+
 </Project>
