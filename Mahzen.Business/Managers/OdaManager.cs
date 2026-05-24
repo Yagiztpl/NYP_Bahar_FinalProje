@@ -16,7 +16,7 @@ namespace Mahzen.Business.Managers
         private Random _random = new Random();
         private double _Zorluk = OyuncuManager.OyunZorlukDegeri;
         
-        public Harita HaritaUret(int oyuncuEsyaKilidi)
+        public Harita HaritaUret(Oyuncu Oyuncu)
         {
             Harita _Harita = new Harita();
             // Şan/Zorluk
@@ -26,14 +26,14 @@ namespace Mahzen.Business.Managers
             //Biyom/Oda
             int biyomSayisi = Enum.GetNames(typeof(Biyomlar)).Length;
             _Harita.Biyom = (Biyomlar)_random.Next(0, biyomSayisi);
-            _Harita.OdaSayisi = _random.Next(1,21+(int)_Zorluk);
+            _Harita.OdaSayisi = _random.Next(1+Oyuncu.Ilerleme,21+(int)_Zorluk);
             for (int i = 0; i < _Harita.OdaSayisi; i++)
             {
-                _Harita.Odalar.Add(OdaUret(_Harita,oyuncuEsyaKilidi));
+                _Harita.Odalar.Add(OdaUret(_Harita,Oyuncu));
             }
             return _Harita;
         }
-        public Oda OdaUret(Harita Harita, int oyuncuEsyaKilidi)
+        public Oda OdaUret(Harita Harita, Oyuncu Oyuncu)
         {
             Oda _Oda = new Oda();
             int enumVaryantlari;
@@ -46,7 +46,7 @@ namespace Mahzen.Business.Managers
             }
             for (int i = 0; i < _Oda.DusmanSayisi; i++)
             {
-                _Oda.Dusmanlar.Add(DusmanUret(_Oda, Harita,oyuncuEsyaKilidi));
+                _Oda.Dusmanlar.Add(DusmanUret(_Oda, Harita,Oyuncu.EsyaKilidi));
             }
             return _Oda;
         }
@@ -173,6 +173,7 @@ namespace Mahzen.Business.Managers
                     Tuketilebilir secilenTuketilebilir = uygunTuketilebilirler[_random.Next(uygunTuketilebilirler.Count)];
                     _Dusman.Tuketilebilir_Lootable.Add(new Tuketilebilir(secilenTuketilebilir.ID)
                     {
+                        Isim = secilenTuketilebilir.Isim,
                         Sure = secilenTuketilebilir.Sure,
                         OdakStat = secilenTuketilebilir.OdakStat,
                         EkledigiDeger = secilenTuketilebilir.EkledigiDeger,

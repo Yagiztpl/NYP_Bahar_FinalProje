@@ -17,6 +17,7 @@ namespace Mahzen.Business.Managers
             StringBuilder turRaporu = new StringBuilder();
             bool savunmada = oyuncuKomutlari.Contains("30000");
             bool yanSilahKullan = oyuncuKomutlari.Contains("10001");
+            bool tekAt = oyuncuKomutlari.Contains("50010");
             double oyuncuHamHasar = 0;
             if (!savunmada)
             {
@@ -29,6 +30,10 @@ namespace Mahzen.Business.Managers
                 if (kullanilanSilah != null && dusman.Direnc != null && dusman.Direnc.Contains(kullanilanSilah.HasarTipi))
                 {
                     zayiflikCarpani = 0.5;
+                }
+                if (tekAt)
+                {
+                    zayiflikCarpani = 999;
                 }
                 oyuncuHamHasar = oyuncu.Guc * zayiflikCarpani;
             }

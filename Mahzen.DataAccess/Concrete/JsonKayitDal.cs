@@ -28,7 +28,7 @@ namespace Mahzen.DataAccess.Concrete
         {
             try
             {
-                var ayarlar = new JsonSerializerOptions { WriteIndented = true };
+                var ayarlar = new JsonSerializerOptions { WriteIndented = true, IncludeFields = true };
                 string json = JsonSerializer.Serialize(oyuncu, ayarlar);
 
                 File.WriteAllText(_dosyaYolu, json);
@@ -48,8 +48,9 @@ namespace Mahzen.DataAccess.Concrete
 
                 string json = File.ReadAllText(_dosyaYolu);
                 if (string.IsNullOrEmpty(json)) return null;
+                var ayarlar = new JsonSerializerOptions { IncludeFields = true };
 
-                return JsonSerializer.Deserialize<Oyuncu>(json);
+                return JsonSerializer.Deserialize<Oyuncu>(json, ayarlar);
             }
             catch (Exception)
             {

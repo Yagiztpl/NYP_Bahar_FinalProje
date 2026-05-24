@@ -28,7 +28,7 @@ namespace Mahzen.ConsoleUI
                 } 
                 else if (komut.Contains("zirh"))
                 {
-                    cikti.Add("00002"); UretimiTetikle(aktifOyuncu, EsyaIsimleri.DermeCatmaZirh); 
+                    cikti.Add("00002"); UretimiTetikle(aktifOyuncu, EsyaIsimleri.HasarliZirh); 
                 }
                 else if (komut.Contains("asa"))
                 {
@@ -88,9 +88,16 @@ namespace Mahzen.ConsoleUI
             }
             if (komut.Contains("debug_"))
             {
-                string esyaAdi = komut.Replace("debug_", "").Trim();
-                EnvanterManager.Debug_EsyaEkle(aktifOyuncu, esyaAdi);
-                cikti.Add("50000");
+                if ((komut.Replace("debug_", "").Trim()) == "kill")
+                {
+                    cikti.Add("50010");
+                }
+                else
+                {
+                    string esyaAdi = komut.Replace("debug_", "").Trim();
+                    EnvanterManager.Debug_EsyaEkle(aktifOyuncu, esyaAdi);
+                    cikti.Add("50000");
+                }
             }
             if (komut.Contains("kusan") || komut.Contains("tak") || komut.Contains("giy"))
             {
@@ -125,6 +132,33 @@ namespace Mahzen.ConsoleUI
                     ColorText.CWriteLine("R", ">> Kayıt sırasında bir hata oluştu!");
                 }
                 cikti.Add("50005");
+            }
+            if (komut.Contains("incele"))
+            {
+                cikti.Add("50009");
+            }
+            if (komut.Contains("iç") || komut.Contains("ic") || komut.Contains("ye") || komut.Contains("tüket") || komut.Contains("tuket") || komut.Contains("kullan"))
+            {
+                string esyaAdi = komut.Replace("iç", "").Replace("ic", "").Replace("ye", "")
+                                      .Replace("tüket", "").Replace("tuket", "").Replace("kullan", "").Trim();
+                var envanterdekiEsya = aktifOyuncu.Envanter.FirstOrDefault(e => e.Isim != null && e.Isim.ToLower() == esyaAdi);
+                if (envanterdekiEsya != null)
+                {
+                    if (envanterdekiEsya is Tuketilebilir tuketilecekEsya)
+                    {
+                        EnvanterManager.TuketilebilirKullan(aktifOyuncu, tuketilecekEsya);
+                    }
+                    else
+                    {
+                        ColorText.CWriteLine("R", $"[-] {envanterdekiEsya.Isim} yenilecek veya içilecek bir şey değil!");
+                    }
+                }
+                else
+                {
+                    ColorText.CWriteLine("R", $"[-] Envanterinde '{esyaAdi}' adında bir eşya bulamadım.");
+                }
+
+                cikti.Add("50000");
             }
             return cikti;
         }

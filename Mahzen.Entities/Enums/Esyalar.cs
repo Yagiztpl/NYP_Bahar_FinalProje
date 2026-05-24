@@ -29,7 +29,7 @@ namespace Mahzen.Entities.Enums
         CurukOdun,
         HayvanPostu,
         SifaliOt,
-        KırıkKemik,
+        KirikKemik,
         //1
         CelikKulce,
         IslenmisDeri,
@@ -42,19 +42,19 @@ namespace Mahzen.Entities.Enums
         BuyuKristali,
         // Ekipman 
         //0
-        DermeCatmaZirh,
+        HasarliZirh,
         TahtaKalkan,
         EskiCubbe,
         KemikHancer,
         //1
         CelikKilic,
-        AgirCelikZirh,
+        CelikZirh,
         RunikAsa,
         KeskinBalta,
         //2
         TungstenAsa,
-        YaratikPuluZirh,
-        KaranlikKristalAsa,
+        PulZirh,
+        KristalAsa,
         CehennemTirpani,
         // Tüketilebilir
         //0

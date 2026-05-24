@@ -64,16 +64,18 @@ namespace Mahzen.ConsoleUI
                 };
                 ColorText.CWriteLine("Y", "Yeni bir maceracı mahzene adım atıyor...");
             }
-            Harita mevcutHarita = _odaManager.HaritaUret(aktifOyuncu.EsyaKilidi);
+            Harita mevcutHarita = _odaManager.HaritaUret(aktifOyuncu);
 
             while (aktifOyuncu.Can > 0)
             {
+                Console.Clear();
                 ColorText.CWriteLine("C", $"\n--- DURUM: [Can: {aktifOyuncu.Can:F1}] | [İlerleme: {aktifOyuncu.Ilerleme}/{mevcutHarita.OdaSayisi}] ---");
 
                 if (aktifOyuncu.Ilerleme >= mevcutHarita.OdaSayisi)
                 {
                     ColorText.CWriteLine("G", "\nTEBRİKLER! Mahzenin karanlığından sağ çıkmayı başardın!");
-                    break;
+                    ColorText.CWriteLine("Y", "Yeni bir rotaya sapıyorsun.");
+                    mevcutHarita = _odaManager.HaritaUret(aktifOyuncu);
                 }
 
                 List<Oda> secenekler = _odaManager.OdalariKar(mevcutHarita);
@@ -143,6 +145,17 @@ namespace Mahzen.ConsoleUI
                     Console.Write("Aksiyon (Saldır / Savun / Envanter): ");
                     string girdi = Console.ReadLine();
                     List<string> komutlar = _girdiOkuyucu.KomutIsle(girdi, oyuncu, new List<Oda>(), false);
+                    if (komutlar.Contains("50009"))
+                    {
+                        ColorText.CWriteLine("C", $"\n=== {dusman.Isim} BİLGİLERİ ===");
+                        ColorText.CWriteLine("Y", $"Can: {dusman.Can:F1} / {dusman.TabanCan:F1}");
+                        ColorText.CWriteLine("Y", $"Sınıf: {dusman.Sinif} | Yönelim: {dusman.Yonelim}");
+                        ColorText.CWriteLine("Y", $"Güç: {dusman.Guc:F1} | Dayanıklılık: {dusman.Dayaniklilik:F1} | Hız: {dusman.Hiz:F1} | Zeka: {dusman.Zeka:F1}");
+                        ColorText.CWriteLine("P", $"Dirençler: {(dusman.Direnc.Any() ? string.Join(", ", dusman.Direnc) : "Yok")}");
+                        ColorText.CWriteLine("O", $"Zayıflıklar: {(dusman.Zayiflik.Any() ? string.Join(", ", dusman.Zayiflik) : "Yok")}");
+                        ColorText.CWriteLine("C", "===============================\n");
+                        continue;
+                    }
                     if (komutlar.Contains("50000"))
                     {
                         continue;

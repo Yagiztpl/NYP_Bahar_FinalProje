@@ -37,27 +37,27 @@ namespace Mahzen.Common.Config
         //----- İsimler
         public static Dictionary<Biyomlar, string[]> BiyomPrefixKatalogu = new Dictionary<Biyomlar, string[]>
         {
-        { Biyomlar.Buz, new[] { "Kırağı", "Donmuş", "Kristal", "Kutup", "Kar" } },
+        { Biyomlar.Buz, new[] { "Kiraği", "Donmuş", "Kristal", "Kutup", "Kar" } },
         { Biyomlar.Lav, new[] { "Kor", "Magma", "Volkanik", "Ateşli", "Cehennem" } },
-        { Biyomlar.Sahil, new[] { "Tuzlu", "Mercan", "Derinsu", "Dalga", "Batık" } },
-        { Biyomlar.Orman, new[] { "Yosunlu", "Sarmaşık", "Kadim", "Vahşi", "Kuytu" } },
+        { Biyomlar.Sahil, new[] { "Tuzlu", "Mercan", "Derinsu", "Dalga", "Batik" } },
+        { Biyomlar.Orman, new[] { "Yosunlu", "Sarmaşik", "Kadim", "Vahşi", "Kuytu" } },
         { Biyomlar.Lanet, new[] { "Ruhsuz", "Çürük", "Kemik", "Uğursuz", "Melun" } },
         { Biyomlar.Dag, new[] { "Yüce", "Kaya", "Keskin", "Heybetli", "Sert" } },
-        { Biyomlar.Magara, new[] { "Karanlık", "Yankılı", "Nemli", "Dipsiz", "Kör" } }
+        { Biyomlar.Magara, new[] { "Karanlik", "Yankili", "Nemli", "Dipsiz", "Kör" } }
         };
 
         public static Dictionary<DusmanYonelimi, string[]> YonelimSifatKatalogu = new Dictionary<DusmanYonelimi, string[]>
         {
-        { DusmanYonelimi.Fiziksel, new[] { "Dişli", "Zırhlı", "Vurucu", "Ezici", "Pençeli" } },
-        { DusmanYonelimi.Buyu, new[] { "Rünik", "Mistik", "Işıltılı", "Gizemli", "Efsunlu" } },
-        { DusmanYonelimi.Zihinsel, new[] { "Lirik", "Hipnotik", "Sinsi", "Sessiz", "Kışkırtıcı" } }
+        { DusmanYonelimi.Fiziksel, new[] { "Dişli", "Zirhli", "Vurucu", "Ezici", "Pençeli" } },
+        { DusmanYonelimi.Buyu, new[] { "Rünik", "Mistik", "Işiltili", "Gizemli", "Efsunlu" } },
+        { DusmanYonelimi.Zihinsel, new[] { "Lirik", "Hipnotik", "Sinsi", "Sessiz", "Kişkirtici" } }
         };
 
         public static Dictionary<DusmanSinifi, string[]> SinifIsimKatalogu = new Dictionary<DusmanSinifi, string[]>()
         {
             {DusmanSinifi.Pusucu, new[] {"Suikastçi", "Pusucusu", "Gölge" }},
-            {DusmanSinifi.Avci, new[] {"Düellocu", "Asker", "Tazı", "Katil" }},
-            {DusmanSinifi.Av, new[] {"Boğa", "TekBoynuzlu", "Yaratık Sürüsü" }},
+            {DusmanSinifi.Avci, new[] {"Düellocu", "Asker", "Tazi", "Katil" }},
+            {DusmanSinifi.Av, new[] {"Boğa", "TekBoynuzlu", "Yaratik Sürüsü" }},
             {DusmanSinifi.Apex, new[] {"Titan", "Yok Edici", "Efsane" }},
         };
 
@@ -68,18 +68,18 @@ namespace Mahzen.Common.Config
     // Kilit = 0
     { EsyaIsimleri.CurukOdun, new Materyal("10001") { Isim = "Çürük Odun", Seviye = 0, Kilit = 0 } },
     { EsyaIsimleri.HayvanPostu, new Materyal("10002") { Isim = "Hayvan Postu", Seviye = 0, Kilit = 0 } },
-    { EsyaIsimleri.SifaliOt, new Materyal("10003") { Isim = "Şifalı Ot", Seviye = 0, Kilit = 0 } },
-    { EsyaIsimleri.KırıkKemik, new Materyal("10004") { Isim = "Kırık Kemik", Seviye = 0, Kilit = 0 } },
+    { EsyaIsimleri.SifaliOt, new Materyal("10003") { Isim = "Şifali Ot", Seviye = 0, Kilit = 0 } },
+    { EsyaIsimleri.KirikKemik, new Materyal("10004") { Isim = "Kirik Kemik", Seviye = 0, Kilit = 0 } },
 
     // Kilit = 1
     { EsyaIsimleri.CelikKulce, new Materyal("10005") { Isim = "Çelik Külçe", Seviye = 0, Kilit = 1 } },
     { EsyaIsimleri.IslenmisDeri, new Materyal("10006") { Isim = "İşlenmiş Deri", Seviye = 0, Kilit = 1 } },
-    { EsyaIsimleri.YaratikKesesi, new Materyal("10007") { Isim = "Yaratık Kesesi", Seviye = 0, Kilit = 1 } },
+    { EsyaIsimleri.YaratikKesesi, new Materyal("10007") { Isim = "Yaratik Kesesi", Seviye = 0, Kilit = 1 } },
     { EsyaIsimleri.RunikToz, new Materyal("10008") { Isim = "Rünik Toz", Seviye = 0, Kilit = 1 } },
 
     // Kilit = 2
     { EsyaIsimleri.TungstenKulce, new Materyal("10009") { Isim = "Tungsten Külçe", Seviye = 0, Kilit = 2 } },
-    { EsyaIsimleri.YaratikPulu, new Materyal("10010") { Isim = "Yaratık Pulu", Seviye = 0, Kilit = 2 } },
+    { EsyaIsimleri.YaratikPulu, new Materyal("10010") { Isim = "Yaratik Pulu", Seviye = 0, Kilit = 2 } },
     { EsyaIsimleri.PeriTozu, new Materyal("10011") { Isim = "Peri Tozu", Seviye = 0, Kilit = 2 } },
     { EsyaIsimleri.BuyuKristali, new Materyal("10012") { Isim = "Büyü Kristali", Seviye = 0, Kilit = 2 } }
 };
@@ -87,8 +87,8 @@ namespace Mahzen.Common.Config
         public static Dictionary<EsyaIsimleri, Ekipman> EkipmanKatalogu = new Dictionary<EsyaIsimleri, Ekipman>()
 {
     // Kilit = 0
-    { EsyaIsimleri.DermeCatmaZirh, new Ekipman("20001") {
-        Isim = "Derme Çatma Zırh", Seviye = 0, Kilit = 0, Dayaniklilik = 5, Can = 5, HasarSinifi = HasarSinifi.Fiziksel,
+    { EsyaIsimleri.HasarliZirh, new Ekipman("20001") {
+        Isim = "Hasarli Zirh", Seviye = 0, Kilit = 0, Dayaniklilik = 5, Can = 5, HasarSinifi = HasarSinifi.Fiziksel,
         UretimTarifi = new List<Esya> {
             new Materyal("10001"), new Materyal("10001"), new Materyal("10001"),
             new Materyal("10002"), new Materyal("10002")
@@ -100,13 +100,13 @@ namespace Mahzen.Common.Config
 
     // Kilit = 1
     { EsyaIsimleri.CelikKilic, new Ekipman("20005") {
-        Isim = "Çelik Kılıç", Seviye = 0, Kilit = 1, Guc = 12, Dayaniklilik = 2, HasarSinifi = HasarSinifi.Fiziksel,
+        Isim = "Çelik Kiliç", Seviye = 0, Kilit = 1, Guc = 12, Dayaniklilik = 2, HasarSinifi = HasarSinifi.Fiziksel,
         UretimTarifi = new List<Esya> {
             new Materyal("10005"), new Materyal("10005"), new Materyal("10005"),
             new Materyal("10006"), new Materyal("10004")
         }
     } },
-    { EsyaIsimleri.AgirCelikZirh, new Ekipman("20006") { Isim = "Ağır Çelik Zırh", Seviye = 0, Kilit = 1, Dayaniklilik = 20, Can = 20, Hiz = -3, HasarSinifi = HasarSinifi.Fiziksel } },
+    { EsyaIsimleri.CelikZirh, new Ekipman("20006") { Isim = "Çelik Zirh", Seviye = 0, Kilit = 1, Dayaniklilik = 20, Can = 20, Hiz = -3, HasarSinifi = HasarSinifi.Fiziksel } },
     { EsyaIsimleri.RunikAsa, new Ekipman("20007") { Isim = "Rünik Asa", Seviye = 0, Kilit = 1, Zeka = 15, Mana = 25, HasarSinifi = HasarSinifi.Element } },
     { EsyaIsimleri.KeskinBalta, new Ekipman("20008") { Isim = "Keskin Balta", Seviye = 0, Kilit = 1, Guc = 16, Hiz = -2, HasarSinifi = HasarSinifi.Fiziksel } },
 
@@ -118,9 +118,9 @@ namespace Mahzen.Common.Config
             new Materyal("10012"), new Materyal("10012")
         }
     } },
-    { EsyaIsimleri.YaratikPuluZirh, new Ekipman("20010") { Isim = "Yaratık Pulu Zırh", Seviye = 0, Kilit = 2, Dayaniklilik = 30, Can = 40, Hiz = 5, HasarSinifi = HasarSinifi.Element } },
-    { EsyaIsimleri.KaranlikKristalAsa, new Ekipman("20011") { Isim = "Karanlık Kristal Asa", Seviye = 0, Kilit = 2, Zeka = 35, Mana = 80, Karizma = 5, HasarSinifi = HasarSinifi.Zihinsel } },
-    { EsyaIsimleri.CehennemTirpani, new Ekipman("20012") { Isim = "Cehennem Tırpanı", Seviye = 0, Kilit = 2, Guc = 35, Can = -10, Hiz = 10, HasarSinifi = HasarSinifi.Fiziksel } }
+    { EsyaIsimleri.PulZirh, new Ekipman("20010") { Isim = "Pul Zirh", Seviye = 0, Kilit = 2, Dayaniklilik = 30, Can = 40, Hiz = 5, HasarSinifi = HasarSinifi.Element } },
+    { EsyaIsimleri.KristalAsa, new Ekipman("20011") { Isim = "Kristal Asa", Seviye = 0, Kilit = 2, Zeka = 35, Mana = 80, Karizma = 5, HasarSinifi = HasarSinifi.Zihinsel } },
+    { EsyaIsimleri.CehennemTirpani, new Ekipman("20012") { Isim = "Cehennem Tirpani", Seviye = 0, Kilit = 2, Guc = 35, Can = -10, Hiz = 10, HasarSinifi = HasarSinifi.Fiziksel } }
 };
 
         public static Dictionary<EsyaIsimleri, Tuketilebilir> TuketilebilirKatalogu = new Dictionary<EsyaIsimleri, Tuketilebilir>()
@@ -130,12 +130,12 @@ namespace Mahzen.Common.Config
     { EsyaIsimleri.KirliBandaj, new Tuketilebilir("30002") { Isim = "Kirli Bandaj", Seviye = 0, Kilit = 0, OdakStat = "Can", EkledigiDeger = 10, Sure = null } },
 
     // Kilit = 1
-    { EsyaIsimleri.SaglikIksiri, new Tuketilebilir("30003") { Isim = "Sağlık İksiri", Seviye = 0, Kilit = 1, OdakStat = "Can", EkledigiDeger = 50, Sure = null } },
+    { EsyaIsimleri.SaglikIksiri, new Tuketilebilir("30003") { Isim = "Sağlik İksiri", Seviye = 0, Kilit = 1, OdakStat = "Can", EkledigiDeger = 50, Sure = null } },
     { EsyaIsimleri.AdrenalinIgnesi, new Tuketilebilir("30004") { Isim = "Adrenalin İğnesi", Seviye = 0, Kilit = 1, OdakStat = "Hiz", EkledigiDeger = 15, Sure = 3 } }, 
 
     // Kilit = 2
     { EsyaIsimleri.IhyaIksiri, new Tuketilebilir("30005") { Isim = "İhya İksiri", Seviye = 0, Kilit = 2, OdakStat = "Can", EkledigiDeger = 200, Sure = null } },
-    { EsyaIsimleri.YildirimParsomeni, new Tuketilebilir("30006") { Isim = "Yıldırım Parşömeni", Seviye = 0, Kilit = 2, OdakStat = "Zeka", EkledigiDeger = 50, Sure = 1 } }
+    { EsyaIsimleri.YildirimParsomeni, new Tuketilebilir("30006") { Isim = "Yildirim Parşömeni", Seviye = 0, Kilit = 2, OdakStat = "Zeka", EkledigiDeger = 50, Sure = 1 } }
 };
     }
 }

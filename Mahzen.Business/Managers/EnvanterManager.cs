@@ -197,7 +197,6 @@ namespace Mahzen.Business.Managers
 
             return uretilecekEkipman;
         }
-        // Mahzen.Business/Managers/EnvanterManager.cs içerisindeki ilgili metot
         public void EsyalariTopla(Dusman Dusman, Oyuncu Oyuncu)
         {
             if (Dusman.Can <= 0)
@@ -272,6 +271,28 @@ namespace Mahzen.Business.Managers
             {
                 Console.WriteLine($"[DEBUG] '{arananGirdi}' isminde veya ID kimliğinde bir eşya bulunamadı!");
             }
+        }
+        public void TuketilebilirKullan(Oyuncu oyuncu, Tuketilebilir tuketilebilir)
+        {
+            if (tuketilebilir.OdakStat == "Can")
+            {
+                double eskiCan = oyuncu.Can;
+                oyuncu.Can += tuketilebilir.EkledigiDeger;
+                double iyilesme = oyuncu.Can - eskiCan;
+                ColorText.CWriteLine("G", $"[+] {tuketilebilir.Isim} tükettin! Canın {iyilesme:F1} kadar yenilendi. (Mevcut Can: {oyuncu.Can:F1}/{oyuncu.TabanCan:F1})");
+            }
+            else
+            {
+                switch (tuketilebilir.OdakStat)
+                {
+                    case "Hiz": oyuncu.Hiz += tuketilebilir.EkledigiDeger; break;
+                    case "Guc": oyuncu.Guc += tuketilebilir.EkledigiDeger; break;
+                    case "Dayaniklilik": oyuncu.Dayaniklilik += tuketilebilir.EkledigiDeger; break;
+                    case "Zeka": oyuncu.Zeka += tuketilebilir.EkledigiDeger; break;
+                }
+                ColorText.CWriteLine("G", $"[+] Mistik bir güç hissettin! {tuketilebilir.Isim} tükettin ve {tuketilebilir.OdakStat} değerin {tuketilebilir.EkledigiDeger} arttı.");
+            }
+            oyuncu.Envanter.Remove(tuketilebilir);
         }
     }
 }
