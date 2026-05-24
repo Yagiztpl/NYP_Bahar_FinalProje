@@ -294,5 +294,38 @@ namespace Mahzen.Business.Managers
             }
             oyuncu.Envanter.Remove(tuketilebilir);
         }
+        public void EkipmanIncele(Ekipman ekipman)
+        {
+            ColorText.CWriteLine("C", $"\n=== {ekipman.Isim.ToUpper()} BİLGİLERİ ===");
+            ColorText.CWriteLine("Y", $"Tip: {ekipman.Tip} | Nadirlik: {ekipman.Nadirlik}");
+            ColorText.CWriteLine("Y", $"Hasar Sınıfı: {ekipman.HasarSinifi} | Hasar Tipi: {ekipman.HasarTipi}");
+            List<string> statlar = new List<string>();
+            if (ekipman.Guc > 0) statlar.Add($"Güç: +{ekipman.Guc}");
+            if (ekipman.Can > 0) statlar.Add($"Can: +{ekipman.Can}");
+            if (ekipman.Dayaniklilik > 0) statlar.Add($"Dayanıklılık: +{ekipman.Dayaniklilik}");
+            if (ekipman.Hiz > 0 || ekipman.Hiz < 0) statlar.Add($"Hız: {ekipman.Hiz}");
+            if (ekipman.Zeka > 0) statlar.Add($"Zeka: +{ekipman.Zeka}");
+            if (ekipman.Mana > 0) statlar.Add($"Mana: +{ekipman.Mana}");
+            if (ekipman.Karizma > 0) statlar.Add($"Karizma: +{ekipman.Karizma}");
+
+            if (statlar.Any())
+            {
+                ColorText.CWriteLine("G", "Verdiği Statlar: " + string.Join(" | ", statlar));
+            }
+
+            if (ekipman.Runler != null && ekipman.Runler.Any())
+            {
+                ColorText.CWriteLine("P", $"Rünler (Direnç): {string.Join(", ", ekipman.Runler)}");
+            }
+            if (ekipman.Lanetler != null && ekipman.Lanetler.Any())
+            {
+                ColorText.CWriteLine("O", $"Lanetler (Zayıflık): {string.Join(", ", ekipman.Lanetler)}");
+            }
+            ColorText.CWriteLine("C", "===============================\n");
+        }
+        public void Sil(Oyuncu oyuncu, Esya esya)
+        {
+            oyuncu.Envanter.Remove(esya);
+        }
     }
 }

@@ -26,7 +26,7 @@ namespace Mahzen.Business.Managers
             //Biyom/Oda
             int biyomSayisi = Enum.GetNames(typeof(Biyomlar)).Length;
             _Harita.Biyom = (Biyomlar)_random.Next(0, biyomSayisi);
-            _Harita.OdaSayisi = _random.Next(1+Oyuncu.Ilerleme,21+(int)_Zorluk);
+            _Harita.OdaSayisi = _random.Next(1+Oyuncu.Ilerleme,21+(int)_Zorluk + Oyuncu.Ilerleme);
             for (int i = 0; i < _Harita.OdaSayisi; i++)
             {
                 _Harita.Odalar.Add(OdaUret(_Harita,Oyuncu));

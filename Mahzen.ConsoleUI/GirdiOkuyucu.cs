@@ -133,9 +133,54 @@ namespace Mahzen.ConsoleUI
                 }
                 cikti.Add("50005");
             }
+            if (komut.Contains("sil"))
+            {
+                string esyaAdi = komut.Replace("sil", "").Trim();
+                var envanterdekiEsya = aktifOyuncu.Envanter.FirstOrDefault(e => e.Isim != null && e.Isim.ToLower() == esyaAdi);
+                if (envanterdekiEsya != null)
+                {
+                    ColorText.CWriteLine("p", $"{envanterdekiEsya.Isim} başarıyla silindi!");
+                    EnvanterManager.Sil(aktifOyuncu, envanterdekiEsya);
+                }
+                else
+                {
+                    ColorText.CWriteLine("r", $"Silinecek eşya bulunamadı.");
+                }
+
+                    cikti.Add("50011");
+            }
             if (komut.Contains("incele"))
             {
-                cikti.Add("50009");
+                if (komut == "incele" || komut == "düşmanı incele" || komut == "dusmani incele")
+                {
+                    cikti.Add("50009");
+                }
+                else
+                {
+                    string esyaAdi = komut.Replace("incele", "").Trim();
+                    var envanterdekiEsya = aktifOyuncu.Envanter.FirstOrDefault(e => e.Isim != null && e.Isim.ToLower() == esyaAdi);
+                    if (envanterdekiEsya != null)
+                    {
+                        if (envanterdekiEsya is Ekipman incelenecekEkipman)
+                        {
+                            EnvanterManager.EkipmanIncele(incelenecekEkipman);
+                        }
+                        else if (envanterdekiEsya is Tuketilebilir tuketilebilirEsya)
+                        {
+                            ColorText.CWriteLine("Y", $"\n=== {tuketilebilirEsya.Isim.ToUpper()} ===");
+                            ColorText.CWriteLine("G", $"Odak: {tuketilebilirEsya.OdakStat} | Etki: +{tuketilebilirEsya.EkledigiDeger} | Süre: {(tuketilebilirEsya.Sure.HasValue ? tuketilebilirEsya.Sure + " Tur" : "Anlık")}\n");
+                        }
+                        else
+                        {
+                            ColorText.CWriteLine("Y", $"\n=== {envanterdekiEsya.Isim.ToUpper()} ===\nBasit bir materyal. Üretimde (Craft) kullanılabilir.\n");
+                        }
+                    }
+                    else
+                    {
+                        ColorText.CWriteLine("R", $"[-] Envanterinde '{esyaAdi}' adında bir eşya bulamadım.");
+                    }
+                    cikti.Add("50000");
+                }
             }
             if (komut.Contains("iç") || komut.Contains("ic") || komut.Contains("ye") || komut.Contains("tüket") || komut.Contains("tuket") || komut.Contains("kullan"))
             {
@@ -160,6 +205,7 @@ namespace Mahzen.ConsoleUI
 
                 cikti.Add("50000");
             }
+
             return cikti;
         }
 

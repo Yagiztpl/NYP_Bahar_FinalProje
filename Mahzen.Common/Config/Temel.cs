@@ -88,39 +88,39 @@ namespace Mahzen.Common.Config
 {
     // Kilit = 0
     { EsyaIsimleri.HasarliZirh, new Ekipman("20001") {
-        Isim = "Hasarli Zirh", Seviye = 0, Kilit = 0, Dayaniklilik = 5, Can = 5, HasarSinifi = HasarSinifi.Fiziksel,
+        Isim = "Hasarli Zirh",Tip = EkipmanTipi.Zırh, Seviye = 0, Kilit = 0, Dayaniklilik = 5, Can = 5, HasarSinifi = HasarSinifi.Fiziksel,
         UretimTarifi = new List<Esya> {
             new Materyal("10001"), new Materyal("10001"), new Materyal("10001"),
             new Materyal("10002"), new Materyal("10002")
         }
     } },
-    { EsyaIsimleri.TahtaKalkan, new Ekipman("20002") { Isim = "Tahta Kalkan", Seviye = 0, Kilit = 0, Dayaniklilik = 8, Hiz = -1, HasarSinifi = HasarSinifi.Fiziksel } },
-    { EsyaIsimleri.EskiCubbe, new Ekipman("20003") { Isim = "Eski Cübbe", Seviye = 0, Kilit = 0, Zeka = 3, Mana = 10, HasarSinifi = HasarSinifi.Zihinsel } },
-    { EsyaIsimleri.KemikHancer, new Ekipman("20004") { Isim = "Kemik Hançer", Seviye = 0, Kilit = 0, Guc = 4, Hiz = 4, HasarSinifi = HasarSinifi.Fiziksel } },
+    { EsyaIsimleri.TahtaKalkan, new Ekipman("20002") { Isim = "Tahta Kalkan",Tip = EkipmanTipi.Silah, Seviye = 0, Kilit = 0, Dayaniklilik = 8, Hiz = -1, HasarSinifi = HasarSinifi.Fiziksel } },
+    { EsyaIsimleri.EskiCubbe, new Ekipman("20003") { Isim = "Eski Cübbe",Tip = EkipmanTipi.Zırh, Seviye = 0, Kilit = 0, Zeka = 3, Mana = 10, HasarSinifi = HasarSinifi.Zihinsel } },
+    { EsyaIsimleri.KemikHancer, new Ekipman("20004") { Isim = "Kemik Hançer",Tip = EkipmanTipi.Silah, Seviye = 0, Kilit = 0, Guc = 4, Hiz = 4, HasarSinifi = HasarSinifi.Fiziksel } },
 
     // Kilit = 1
     { EsyaIsimleri.CelikKilic, new Ekipman("20005") {
-        Isim = "Çelik Kiliç", Seviye = 0, Kilit = 1, Guc = 12, Dayaniklilik = 2, HasarSinifi = HasarSinifi.Fiziksel,
+        Isim = "Çelik Kiliç", Seviye = 0,Tip = EkipmanTipi.Zırh, Kilit = 1, Guc = 12, Dayaniklilik = 2, HasarSinifi = HasarSinifi.Fiziksel,
         UretimTarifi = new List<Esya> {
             new Materyal("10005"), new Materyal("10005"), new Materyal("10005"),
             new Materyal("10006"), new Materyal("10004")
         }
     } },
-    { EsyaIsimleri.CelikZirh, new Ekipman("20006") { Isim = "Çelik Zirh", Seviye = 0, Kilit = 1, Dayaniklilik = 20, Can = 20, Hiz = -3, HasarSinifi = HasarSinifi.Fiziksel } },
-    { EsyaIsimleri.RunikAsa, new Ekipman("20007") { Isim = "Rünik Asa", Seviye = 0, Kilit = 1, Zeka = 15, Mana = 25, HasarSinifi = HasarSinifi.Element } },
-    { EsyaIsimleri.KeskinBalta, new Ekipman("20008") { Isim = "Keskin Balta", Seviye = 0, Kilit = 1, Guc = 16, Hiz = -2, HasarSinifi = HasarSinifi.Fiziksel } },
+    { EsyaIsimleri.CelikZirh, new Ekipman("20006") { Isim = "Çelik Zirh",Tip = EkipmanTipi.Zırh, Seviye = 0, Kilit = 1, Dayaniklilik = 20, Can = 20, Hiz = -3, HasarSinifi = HasarSinifi.Fiziksel } },
+    { EsyaIsimleri.RunikAsa, new Ekipman("20007") { Isim = "Rünik Asa",Tip = EkipmanTipi.Silah, Seviye = 0, Kilit = 1, Zeka = 15, Mana = 25, HasarSinifi = HasarSinifi.Element } },
+    { EsyaIsimleri.KeskinBalta, new Ekipman("20008") { Isim = "Keskin Balta",Tip = EkipmanTipi.Silah, Seviye = 0, Kilit = 1, Guc = 16, Hiz = -2, HasarSinifi = HasarSinifi.Fiziksel } },
 
     // Kilit = 2
     { EsyaIsimleri.TungstenAsa, new Ekipman("20009") {
-        Isim = "Tungsten Asa", Seviye = 0, Kilit = 2, Guc = 28, Dayaniklilik = 10, HasarSinifi = HasarSinifi.Element,
+        Isim = "Tungsten Asa", Seviye = 0, Kilit = 2, Guc = 28,Tip = EkipmanTipi.Silah, Dayaniklilik = 10, HasarSinifi = HasarSinifi.Element,
         UretimTarifi = new List<Esya> {
             new Materyal("10009"), new Materyal("10009"), new Materyal("10009"), new Materyal("10009"),
             new Materyal("10012"), new Materyal("10012")
         }
     } },
-    { EsyaIsimleri.PulZirh, new Ekipman("20010") { Isim = "Pul Zirh", Seviye = 0, Kilit = 2, Dayaniklilik = 30, Can = 40, Hiz = 5, HasarSinifi = HasarSinifi.Element } },
-    { EsyaIsimleri.KristalAsa, new Ekipman("20011") { Isim = "Kristal Asa", Seviye = 0, Kilit = 2, Zeka = 35, Mana = 80, Karizma = 5, HasarSinifi = HasarSinifi.Zihinsel } },
-    { EsyaIsimleri.CehennemTirpani, new Ekipman("20012") { Isim = "Cehennem Tirpani", Seviye = 0, Kilit = 2, Guc = 35, Can = -10, Hiz = 10, HasarSinifi = HasarSinifi.Fiziksel } }
+    { EsyaIsimleri.PulZirh, new Ekipman("20010") { Isim = "Pul Zirh",Tip = EkipmanTipi.Zırh, Seviye = 0, Kilit = 2, Dayaniklilik = 30, Can = 40, Hiz = 5, HasarSinifi = HasarSinifi.Element } },
+    { EsyaIsimleri.KristalAsa, new Ekipman("20011") { Isim = "Kristal Asa",Tip = EkipmanTipi.Silah, Seviye = 0, Kilit = 2, Zeka = 35, Mana = 80, Karizma = 5, HasarSinifi = HasarSinifi.Zihinsel } },
+    { EsyaIsimleri.CehennemTirpani, new Ekipman("20012") { Isim = "Cehennem Tirpani",Tip = EkipmanTipi.Silah, Seviye = 0, Kilit = 2, Guc = 35, Can = -10, Hiz = 10, HasarSinifi = HasarSinifi.Fiziksel } }
 };
 
         public static Dictionary<EsyaIsimleri, Tuketilebilir> TuketilebilirKatalogu = new Dictionary<EsyaIsimleri, Tuketilebilir>()
