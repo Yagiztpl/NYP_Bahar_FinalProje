@@ -37,7 +37,6 @@ namespace Mahzen.Entities.Enums
     {
         Saldiri,
         Savunma,
-        Tehtid,
         Esya
     }
 
@@ -55,9 +54,6 @@ namespace Mahzen.Entities.Enums
         Su,
         Buz,
         Lanet,
-        // Zihinsel Hasarlar
-        Ikna,
-        Tehtid,
         // --- Eklenti Kökenli
         // Fiziksel Hasarlar
         // Elemental Hasarlar

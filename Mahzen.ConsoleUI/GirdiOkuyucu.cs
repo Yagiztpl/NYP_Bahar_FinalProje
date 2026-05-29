@@ -151,7 +151,11 @@ namespace Mahzen.ConsoleUI
             }
             if (komut.Contains("incele"))
             {
-                if (komut == "incele" || komut == "düşmanı incele" || komut == "dusmani incele")
+                if (komut == "kendini incele" || komut == "kendimi incele")
+                {
+                    cikti.Add("50012");
+                }
+                else if (komut == "incele" || komut == "düşmanı incele" || komut == "dusmani incele")
                 {
                     cikti.Add("50009");
                 }
@@ -172,7 +176,7 @@ namespace Mahzen.ConsoleUI
                         }
                         else
                         {
-                            ColorText.CWriteLine("Y", $"\n=== {envanterdekiEsya.Isim.ToUpper()} ===\nBasit bir materyal. Üretimde (Craft) kullanılabilir.\n");
+                            ColorText.CWriteLine("Y", $"\n=== {envanterdekiEsya.Isim.ToUpper()} ===\nBasit bir materyal. Üretimde kullanılabilir.\n");
                         }
                     }
                     else

@@ -22,26 +22,6 @@ namespace Mahzen.Business.Managers
                 default: Oyuncu.EsyaKilidi = 0; break;
             }
         }
-
-        public Oyuncu OyuncuUret()
-        {
-            Oyuncu _Oyuncu = new Oyuncu();
-            _Oyuncu.TabanCan = 20;
-            _Oyuncu.TabanDayaniklilik = 5;
-            _Oyuncu.TabanHiz = 3;
-            _Oyuncu.TabanKarizma = 2;
-            _Oyuncu.TabanMana = 20;
-            _Oyuncu.TabanZeka = 3;
-            _Oyuncu.TabanGuc = 3;
-            _Oyuncu.Can = _Oyuncu.TabanCan;
-            _Oyuncu.Dayaniklilik = _Oyuncu.TabanDayaniklilik;
-            _Oyuncu.Hiz = _Oyuncu.TabanHiz;
-            _Oyuncu.Karizma = _Oyuncu.TabanKarizma;
-            _Oyuncu.Mana = _Oyuncu.TabanMana;
-            _Oyuncu.Zeka = _Oyuncu.TabanZeka;
-            _Oyuncu.Guc = _Oyuncu.TabanGuc;
-            return _Oyuncu;
-        }
         public void ZorlukHesabi(Oyuncu Oyuncu)
         {
             // (2 + 2.5 + 1.5 + 1 + 2 + 1 + 1)/10 = 1 = Taban Guc 

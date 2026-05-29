@@ -28,10 +28,6 @@ namespace Mahzen.Common.Config
             { HasarTipi.Su, new Hasar { Sinif = HasarSinifi.Element, Surec = HasarSureci.ZamanlaYuzde, Zayiflatma = ZayiflatmaTipi.StatDusurur, Taban = 0.1, StatOdagi = StatOdagi.Dayaniklilik } },
             { HasarTipi.Buz, new Hasar { Sinif = HasarSinifi.Element, Surec = HasarSureci.ZamanlaYuzde, Zayiflatma = ZayiflatmaTipi.StatDusurur, Taban = 0.1, StatOdagi = StatOdagi.Hiz } },
             { HasarTipi.Lanet, new Hasar { Sinif = HasarSinifi.Element, Surec = HasarSureci.AnlikYuzde, Taban = 0.15 } },
-
-            // Zihinsel Hasarlar
-            { HasarTipi.Ikna, new Hasar { Sinif = HasarSinifi.Zihinsel, Surec = HasarSureci.Anlik, Taban = 1} },
-            { HasarTipi.Tehtid, new Hasar { Sinif = HasarSinifi.Zihinsel, Surec = HasarSureci.Anlik, Taban = 1} }
         };
 
         //----- İsimler
@@ -50,7 +46,6 @@ namespace Mahzen.Common.Config
         {
         { DusmanYonelimi.Fiziksel, new[] { "Dişli", "Zirhli", "Vurucu", "Ezici", "Pençeli" } },
         { DusmanYonelimi.Buyu, new[] { "Rünik", "Mistik", "Işiltili", "Gizemli", "Efsunlu" } },
-        { DusmanYonelimi.Zihinsel, new[] { "Lirik", "Hipnotik", "Sinsi", "Sessiz", "Kişkirtici" } }
         };
 
         public static Dictionary<DusmanSinifi, string[]> SinifIsimKatalogu = new Dictionary<DusmanSinifi, string[]>()

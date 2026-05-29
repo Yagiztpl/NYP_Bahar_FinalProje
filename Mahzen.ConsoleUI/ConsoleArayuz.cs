@@ -51,14 +51,8 @@ namespace Mahzen.ConsoleUI
             }
             if (aktifOyuncu == null)
             {
-                aktifOyuncu = new Oyuncu()
+                aktifOyuncu = new Oyuncu(100, 12, 8, 10, 10)
                 {
-                    Can = 100,
-                    TabanCan = 100,
-                    Guc = 12,
-                    Dayaniklilik = 8,
-                    Hiz = 10,
-                    Zeka = 10,
                     EsyaKilidi = 0,
                     Ilerleme = 0
                 };
@@ -69,7 +63,7 @@ namespace Mahzen.ConsoleUI
             while (aktifOyuncu.Can > 0)
             {
                 Console.Clear();
-                ColorText.CWriteLine("C", $"\n--- DURUM: [Can: {aktifOyuncu.Can:F1}] | [İlerleme: {aktifOyuncu.Ilerleme}/{mevcutHarita.OdaSayisi}] ---");
+                ColorText.CWriteLine("C", $"\n--- DURUM: [Can: {aktifOyuncu.Can:F0}/{aktifOyuncu.Maxcan:F0}] | [İlerleme: {aktifOyuncu.Ilerleme}/{mevcutHarita.OdaSayisi}] ---");
 
                 if (aktifOyuncu.Ilerleme >= mevcutHarita.OdaSayisi)
                 {
@@ -94,6 +88,17 @@ namespace Mahzen.ConsoleUI
                     if (secilenOda == null && !hamleGecerliMi)
                     {
                         ColorText.CWriteLine("R", "Lütfen geçerli bir hamle yapın (oda1, envanter, kuşan çelik kılıç, kaydet).");
+                    }
+                    if (komutlar.Contains("50012"))
+                    {
+                        ColorText.CWriteLine("C", $"\n=== OYUNCU BİLGİLERİ ===");
+                        ColorText.CWriteLine("Y", $"Can: {aktifOyuncu.Can:F0} / {aktifOyuncu.TabanCan:F0}");
+                        ColorText.CWriteLine("Y", $"Güç: {aktifOyuncu.Guc:F0} | Dayanıklılık: {aktifOyuncu.Dayaniklilik:F0} | Hız: {aktifOyuncu.Hiz:F0} | Zeka: {aktifOyuncu.Zeka:F0}");
+                        ColorText.CWriteLine("P", $"Dirençler: {(aktifOyuncu.Direnc.Any() ? string.Join(", ", aktifOyuncu.Direnc) : "Yok")}");
+                        ColorText.CWriteLine("O", $"Zayıflıklar: {(aktifOyuncu.Zayiflik.Any() ? string.Join(", ", aktifOyuncu.Zayiflik) : "Yok")}");
+
+                        ColorText.CWriteLine("C", "===============================\n");
+                        continue;
                     }
                 }
 
@@ -141,16 +146,16 @@ namespace Mahzen.ConsoleUI
                 ColorText.CWriteLine("Y", $"\n--- SAVAŞ BAŞLADI: {dusman.Isim} (Düşman {dusmanSayaci}/{oda.Dusmanlar.Count}) ---");
                 while (oyuncu.Can > 0 && dusman.Can > 0)
                 {
-                    Console.WriteLine($"\n[Senin Canın: {oyuncu.Can:F1}] vs [{dusman.Isim} Canı: {dusman.Can:F1}]");
+                    Console.WriteLine($"\n[Senin Canın: {oyuncu.Can:F0}/{oyuncu.Maxcan:F0}] vs [{dusman.Isim} Canı: {dusman.Can:F1}]");
                     Console.Write("Aksiyon (Saldır / Savun / Envanter): ");
                     string girdi = Console.ReadLine();
                     List<string> komutlar = _girdiOkuyucu.KomutIsle(girdi, oyuncu, new List<Oda>(), false);
                     if (komutlar.Contains("50009"))
                     {
                         ColorText.CWriteLine("C", $"\n=== {dusman.Isim} BİLGİLERİ ===");
-                        ColorText.CWriteLine("Y", $"Can: {dusman.Can:F1} / {dusman.TabanCan:F1}");
+                        ColorText.CWriteLine("Y", $"Can: {dusman.Can:F0} / {dusman.TabanCan:F0}");
                         ColorText.CWriteLine("Y", $"Sınıf: {dusman.Sinif} | Yönelim: {dusman.Yonelim}");
-                        ColorText.CWriteLine("Y", $"Güç: {dusman.Guc:F1} | Dayanıklılık: {dusman.Dayaniklilik:F1} | Hız: {dusman.Hiz:F1} | Zeka: {dusman.Zeka:F1}");
+                        ColorText.CWriteLine("Y", $"Güç: {dusman.Guc:F0} | Dayanıklılık: {dusman.Dayaniklilik:F0} | Hız: {dusman.Hiz:F0} | Zeka: {dusman.Zeka:F0}");
                         ColorText.CWriteLine("P", $"Dirençler: {(dusman.Direnc.Any() ? string.Join(", ", dusman.Direnc) : "Yok")}");
                         ColorText.CWriteLine("O", $"Zayıflıklar: {(dusman.Zayiflik.Any() ? string.Join(", ", dusman.Zayiflik) : "Yok")}");
                         ColorText.CWriteLine("C", "===============================\n");

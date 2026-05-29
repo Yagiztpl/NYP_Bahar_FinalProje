@@ -75,7 +75,7 @@ namespace Mahzen.Business.Managers
             if (netHasar < 1) netHasar = 1;
             oyuncu.Can -= netHasar;
             string ekstraMesaj = oyuncuSavunmada ? " (Kalkanın/Zırhın darbeyi hafifletti!)" : "";
-            return $">> {dusman.Isim ?? "Düşman"} sana vurdu ve {netHasar:F1} hasar aldın!{ekstraMesaj} (Kalan Canın: {(oyuncu.Can):F1})";
+            return $">> {dusman.Isim ?? "Düşman"} sana vurdu ve {netHasar:F1} hasar aldın!{ekstraMesaj} (Kalan Canın: {(oyuncu.Can):F0})";
         }
     }
 }

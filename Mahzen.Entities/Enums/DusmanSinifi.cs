@@ -17,7 +17,6 @@ namespace Mahzen.Entities.Enums
     {
         Fiziksel,
         Buyu,
-        Zihinsel
     }
     public enum DusmanParcalari
     {

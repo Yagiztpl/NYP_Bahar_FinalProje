@@ -10,7 +10,6 @@ namespace Mahzen.Business.Abstract
     public interface IOyuncuService
     {
         void ZorlukHesabi(Oyuncu Oyuncu);
-        Oyuncu OyuncuUret();
         void IlerlemeHesapla(Oyuncu Oyuncu);
     }
 }

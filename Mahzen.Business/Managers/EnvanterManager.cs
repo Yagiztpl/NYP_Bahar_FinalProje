@@ -45,7 +45,7 @@ namespace Mahzen.Business.Managers
             switch (Ekipman.Nadirlik)
             {
                 case Entities.Enums.EsyaNadirligi.Eser:
-                    Oyuncu.Can += Oyuncu.TabanCan / 5 + Ekipman.Can;
+                    Oyuncu.Can += Oyuncu.Maxcan / 5 + Ekipman.Can; Oyuncu.Maxcan += (int)(Oyuncu.Maxcan / 5 + Ekipman.Can);
                     Oyuncu.Guc += Oyuncu.TabanGuc / 5 + Ekipman.Guc;
                     Oyuncu.Dayaniklilik += Oyuncu.TabanDayaniklilik / 5 + Ekipman.Dayaniklilik;
                     Oyuncu.Hiz += Oyuncu.TabanHiz / 5 + Ekipman.Hiz;
@@ -56,7 +56,7 @@ namespace Mahzen.Business.Managers
                         Oyuncu.Karizma += Oyuncu.TabanKarizma / 5 + Ekipman.Karizma;
                     break;
                 default:
-                    Oyuncu.Can += Ekipman.Can;
+                    Oyuncu.Can += Ekipman.Can; Oyuncu.Maxcan += (int)Ekipman.Can;
                     Oyuncu.Guc += Ekipman.Guc;
                     Oyuncu.Dayaniklilik += Ekipman.Dayaniklilik;
                     Oyuncu.Hiz += Ekipman.Hiz;
@@ -117,10 +117,17 @@ namespace Mahzen.Business.Managers
         }
         public void EkipmanCikart(Varlik Varlik, Ekipman Ekipman)
         {
+            Oyuncu oyuncu = Varlik as Oyuncu;
+
             switch (Ekipman.Nadirlik)
             {
                 case Entities.Enums.EsyaNadirligi.Eser:
                     Varlik.Can -= (Varlik.TabanCan / 5 + Ekipman.Can);
+                    if (oyuncu != null)
+                    {
+                        oyuncu.Maxcan -= (int)(Varlik.TabanCan / 5 + Ekipman.Can);
+                    }
+
                     Varlik.Guc -= (Varlik.TabanGuc / 5 + Ekipman.Guc);
                     Varlik.Dayaniklilik -= (Varlik.TabanDayaniklilik / 5 + Ekipman.Dayaniklilik);
                     Varlik.Hiz -= (Varlik.TabanHiz / 5 + Ekipman.Hiz);
@@ -134,6 +141,11 @@ namespace Mahzen.Business.Managers
 
                 default:
                     Varlik.Can -= Ekipman.Can;
+                    if (oyuncu != null)
+                    {
+                        oyuncu.Maxcan -= (int)Ekipman.Can;
+                    }
+
                     Varlik.Guc -= Ekipman.Guc;
                     Varlik.Dayaniklilik -= Ekipman.Dayaniklilik;
                     Varlik.Hiz -= Ekipman.Hiz;
@@ -279,7 +291,7 @@ namespace Mahzen.Business.Managers
                 double eskiCan = oyuncu.Can;
                 oyuncu.Can += tuketilebilir.EkledigiDeger;
                 double iyilesme = oyuncu.Can - eskiCan;
-                ColorText.CWriteLine("G", $"[+] {tuketilebilir.Isim} tükettin! Canın {iyilesme:F1} kadar yenilendi. (Mevcut Can: {oyuncu.Can:F1}/{oyuncu.TabanCan:F1})");
+                ColorText.CWriteLine("G", $"[+] {tuketilebilir.Isim} tükettin! Canın {iyilesme:F1} kadar yenilendi.");
             }
             else
             {
