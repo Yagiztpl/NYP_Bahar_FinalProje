@@ -10,9 +10,15 @@ namespace Mahzen.Business.Abstract
 {
     public interface IEnvanterService
     {
+        void EkipmanKusanOyuncu(Oyuncu Oyuncu, Ekipman Ekipman);
         void EkipmanKusan(Varlik Varlik, Ekipman Ekipman);
         void EkipmanCikart(Varlik Varlik, Ekipman Ekipman);
-        void Listele(Oyuncu Oyuncu);
+        Ekipman EkipmanUret(Oyuncu oyuncu, Ekipman uretilecekEkipman);
         void EsyalariTopla(Dusman Dusman, Oyuncu Oyuncu);
+        void Listele(Oyuncu Oyuncu);
+        void Debug_EsyaEkle(Oyuncu oyuncu, string arananGirdi);
+        void TuketilebilirKullan(Oyuncu oyuncu, Tuketilebilir tuketilebilir);
+        void EkipmanIncele(Ekipman ekipman);
+        void Sil(Oyuncu oyuncu, Esya esya);
     }
 }

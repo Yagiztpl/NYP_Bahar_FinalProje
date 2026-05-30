@@ -10,5 +10,7 @@ namespace Mahzen.Business.Abstract
     public interface ISavasService
     {
         string TurIsle(Oyuncu oyuncu, Dusman dusman, List<string> oyuncuKomutlari);
+        string OyuncuSaldirisiUygula(Oyuncu oyuncu, Dusman dusman, double hasar, bool savunmada);
+        string DusmanSaldirisiUygula(Dusman dusman, Oyuncu oyuncu, double hasar, bool oyuncuSavunmada);
     }
 }

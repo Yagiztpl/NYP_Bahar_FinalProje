@@ -13,5 +13,7 @@ namespace Mahzen.Business.Abstract
         Harita HaritaUret();
         Oda OdaUret(Harita Harita);
         Dusman DusmanUret(Oda Oda, Harita Harita);
+        List<Oda> OdalariKar(Harita Harita);
+        void OdaSec(Oyuncu Oyuncu, Oda Oda);
     }
 }
