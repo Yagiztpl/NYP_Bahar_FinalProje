@@ -13,9 +13,8 @@ namespace Mahzen.Entities.Abstract
     [JsonDerivedType(typeof(Tuketilebilir), typeDiscriminator: "tuketilebilir")]
     public class Esya
     {
-        public string Isim;
+        public string Isim { get; set; }
         public string ID { get; set; }
-        public int Seviye { get; set; } 
         public int Kilit { get; set; }
         public List<Esya> UretimTarifi = new List<Esya>();
         public Esya(string ID)

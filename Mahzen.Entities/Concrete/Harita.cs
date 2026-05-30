@@ -13,7 +13,6 @@ namespace Mahzen.Entities.Concrete
         public int OdaSayisi { get; set; }
         public int Sans { get; set; }
         public int HaritaZorlugu { get; set; }
-        public int DonusHakki { get; set; }
         public Biyomlar Biyom { get; set; }
         public List<Oda> Odalar { get; set; } = new List<Oda>();
 

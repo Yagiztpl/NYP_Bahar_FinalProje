@@ -22,7 +22,6 @@ namespace Mahzen.Business.Managers
             // Şan/Zorluk
             _Harita.Sans = _random.Next(1 + Convert.ToInt32(_Zorluk * 5)+1);
             _Harita.HaritaZorlugu = _random.Next(1 + Convert.ToInt32(5 * _Zorluk)+1);
-            _Harita.DonusHakki = 1;
             //Biyom/Oda
             int biyomSayisi = Enum.GetNames(typeof(Biyomlar)).Length;
             _Harita.Biyom = (Biyomlar)_random.Next(0, biyomSayisi);
