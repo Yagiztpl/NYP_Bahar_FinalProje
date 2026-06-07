@@ -122,7 +122,7 @@ namespace Mahzen.ConsoleUI
             {
                 case OdaTipi.Dinlenme:
                     ColorText.CWriteLine("G", "\n>> Güvenli bir kamp ateşinin başına oturdun. Canın tamamen yenilendi!");
-                    oyuncu.Can += oyuncu.TabanCan;
+                    oyuncu.Can = oyuncu.Maxcan;
                     break;
                 case OdaTipi.Savas:
                 case OdaTipi.Arena:
